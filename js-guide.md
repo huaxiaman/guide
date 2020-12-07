@@ -6,6 +6,10 @@
 
 [1.2 空行](#12-空行)
 
+[2 命名规则](#2-命名规则)
+
+[3 注释](#3-注释)
+
 ## 1 空白
 
 ### 1.1 空格
@@ -281,4 +285,288 @@
       console.log(foo);
     }
     ```
+
+## 命名规则
+
+- 不得使用拼音或拼音简写命名。
+
+  ```javascript
+  // bad
+  var 
+  var gjjAmout; // 公积金额度
+  var frName; // 法人姓名
+  function geShiHua() {  } // 格式化
+  ```
+
+- 不要使用下划线开头或结尾。
+
+  ```javascript
+  // bad
+  this.__firstName__ = 'Panda';
+  this.firstName_ = 'Panda';
+  this._firstName = 'Panda';
+
+  // good
+  this.firstName = 'Panda';
+
+  // good, in environments where WeakMaps are available
+  // see https://kangax.github.io/compat-table/es6/#test-WeakMap
+  const firstNames = new WeakMap();
+  firstNames.set(this, 'Panda');
+  ```
+
+- `命名空间` 、`变量`、`函数`、`参数`、`方法`、`属性`使用`Camel`命名。
+
+- `常量`使用全部字母大写，单词间`_`分隔的命名法。
+
+- 仅当命名`构造函数`或`类`的时候使用`Pascal`命名法。
+
+    ```javascript
+    // bad
+    function user(options) {
+      this.name = options.name;
+    }
+
+    const bad = new user({
+      name: 'nope',
+    });
+
+    // good
+    class User {
+      constructor(options) {
+        this.name = options.name;
+      }
+    }
+
+    const good = new User({
+      name: 'yup',
+    });
+    ```
+    
+- `文件名`应该和默认`export`的名字刚好匹配。
+    
+- 当默认导出一个函数时使用`Camel`风格。
+
+  ```javascript
+  function makeStyleGuide() {  }
+
+  export default makeStyleGuide;
+  ```
+  
+- 当导出`构造函数`、`类`、`单例`、`函数库`、`对象`时使用`Pascal`风格。
+
+  ```javascript
+  const AirbnbStyleGuide = {
+    es6: {
+    }
+  };
+
+  export default AirbnbStyleGuide;
+  ```
+
+- 缩略词应全部大写或小写。
+
+  > 原因：名字是用来阅读的，不能让步给计算机算法.
+  
+      ```javascript
+    // bad
+    import SmsContainer from './containers/SmsContainer';
+
+    // bad
+    const HttpRequests = [
+      // ...
+    ];
+
+    // good
+    import SMSContainer from './containers/SMSContainer';
+
+    // good
+    const HTTPRequests = [
+      // ...
+    ];
+    ```
+    
+- [建议] `函数名`使用`动宾短语`。
+
+  ```javascript
+  // good
+  function getStyle(element) {  }
+  ```
+  
+- 【建议】 `boolean`类型的变量使用`is`或`has`开头。
+
+  ```javascript
+  // good
+  var isReady = false;
+  var hasMoreCommands = false;
+  ```
+  
+- [建议] `Promise对象`用`动宾短语的进行时`表达。
+
+  ```javascript
+  //good
+  var loadingData = ajax.get('url');
+  loadingData.then(callback);
+  ```
+
+## 3 注释
+
+- 注释缩进与被注释代码保持一致。
+
+- 所有注释都要以空格开头便于阅读。
+
+  ```javascript
+  // bad
+  //is current tab
+  const active = true;
+
+  // good
+  // is current tab
+  const active = true;
+
+  // bad
+  /**
+   *make() returns a new element
+   *based on the passed-in tag name
+   */
+  function make(tag) {
+
+    // ...
+
+    return element;
+  }
+
+  // good
+  /**
+   * make() returns a new element
+   * based on the passed-in tag name
+   */
+  function make(tag) {
+
+    // ...
+
+    return element;
+  }
+  ```
+
+- 多行注释使用文档注释`/** ... */`，而避免使用`/* ... */`。
+
+  ```javascript
+  // bad
+  // 函数名
+  // 描述
+  // 参数
+  // 返回值
+  function make(tag) {
+
+    // ...
+
+    return 1;
+  }
+
+  // bad
+  /*
+  函数名
+  描述
+  参数
+  返回值
+  */
+  function make(tag) {
+
+    // ...
+
+    return 1;
+  }
+
+  // good
+  /**
+   * make() returns a new element
+   * based on the passed in tag name
+   */
+  function make(tag) {
+
+    // ...
+
+    return element;
+  }
+  ```
+  
+- 为了便于代码阅读和自文档化，以下内容必须包含以 `/**...*/` 形式的块注释中。
+
+1. 文件
+2. namespace
+3.类
+4.函数或方法
+5.类属性
+6.事件
+7.全局变量
+8.常量
+9.AMD模块
+
+- 单行注释独占一行，如果不是放置在块的第一行则在注释前留一个空行。
+
+  ```javascript
+  // bad
+  const active = true;  // is current tab
+
+  // good
+  // is current tab
+  const active = true;
+
+  // bad
+  function getType() {
+    console.log('fetching type...');
+    // set the default type to 'no type'
+    const type = this._type || 'no type';
+
+    return type;
+  }
+
+  // good
+  function getType() {
+    console.log('fetching type...');
+
+    // set the default type to 'no type'
+    const type = this._type || 'no type';
+
+    return type;
+  }
+
+  // also good
+  function getType() {
+    // set the default type to 'no type'
+    const type = this._type || 'no type';
+
+    return type;
+  }
+  ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
