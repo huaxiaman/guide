@@ -10,11 +10,14 @@
 
 [3 注释](#3-注释)
 
+[4 控制语句](#4-控制语句)
+
 ## 1 空白
 
 ### 1.1 空格
 
-- 将软tab设置为两个空格。
+- 将软tab设置为两个空格。  
+测试<span style="color:red;">好好</span>大的
 
     ```javascript
     // bad
@@ -176,8 +179,6 @@
     var obj = { a: 1 }
     ```
 
-
-
 ### 1.2 空行
 
 - 用空行结束文件。
@@ -286,7 +287,7 @@
     }
     ```
 
-## 命名规则
+## 2 命名规则
 
 - 不得使用拼音或拼音简写命名。
 
@@ -413,6 +414,16 @@
 
 - 注释缩进与被注释代码保持一致。
 
+  ```javascript
+  // bad
+    // is current tab
+  var active = true;
+    
+  // bad
+  // 输出标题
+    document.getElementById("myH1").innerHTML="欢迎来到我的主页";
+  ```
+
 - 所有注释都要以空格开头便于阅读。
 
   ```javascript
@@ -491,17 +502,17 @@
   }
   ```
   
-- 为了便于代码阅读和自文档化，以下内容必须包含以 `/**...*/` 形式的块注释中。
+- <font color=#1986db size=5>[建议]</font>为了便于代码阅读和自文档化，以下内容必须包含以 `/**...*/` 形式的块注释中。
 
 1. 文件
 2. namespace
-3.类
-4.函数或方法
-5.类属性
-6.事件
-7.全局变量
-8.常量
-9.AMD模块
+3. 类
+4. 函数或方法
+5. 类属性
+6. 事件
+7. 全局变量
+8. 常量
+9. AMD模块
 
 - 单行注释独占一行，如果不是放置在块的第一行则在注释前留一个空行。
 
@@ -541,10 +552,69 @@
   }
   ```
 
+## 4 控制语句
 
+- 一旦你的控制语句 (`if`, `while` 等。) 太长或者超出行宽最大长度，每一个(组)条件要被放到新行。逻辑运算符应该在写在行的开头。
+    > 原因：行开头有运算符可以使运算符有像链式方法一样的形式。这对于追踪复杂逻辑能够提高可读性。
 
+    ```javascript
+    // bad
+    if ((foo === 123 || bar === 'abc') && doesItLookGoodWhenItBecomesThatLong() && isThisReallyHappening()) {
+      thing1();
+    }
 
+    // bad
+    if (foo === 123 &&
+      bar === 'abc') {
+      thing1();
+    }
 
+    // bad
+    if (foo === 123
+      && bar === 'abc') {
+      thing1();
+    }
+    
+    // bad
+    if (
+      foo === 123 &&
+      bar === 'abc'
+    ) {
+      thing1();
+    }
+	
+	// good
+    if (
+      foo === 123
+      && bar === 'abc'
+    ) {
+      thing1();
+    }
+    
+    // good
+    if (
+      (foo === 123 || bar === "abc")
+      && doesItLookGoodWhenItBecomesThatLong()
+      && isThisReallyHappening()
+    ) {
+      thing1();
+    }
+
+    // good
+    if (foo === 123 && bar === 'abc') {
+      thing1();
+    }
+    ```
+
+- 避免使用`Yoda`表示法。
+
+	```JavaScript
+	// bad
+	if('blue' === theSky) {  }
+	
+	// good
+	if(theSky === 'blue) {  }
+	```
 
 
 
