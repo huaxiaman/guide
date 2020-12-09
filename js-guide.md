@@ -12,6 +12,8 @@
 
 [4 控制语句](#4-控制语句)
 
+[5 请求数据](#5-请求数据)
+
 ## 1 空白
 
 ### 1.1 空格
@@ -615,7 +617,89 @@
 	// good
 	if(theSky === 'blue) {  }
 	```
+ye
+## 5 AJAX
 
+- 使用AJAX，必须要有处理请求失败的回调，并且对接口的非预期返回做处理。
+
+  ```javascript
+
+  // bad
+  $.ajax({
+    url: '',
+    type: 'get',
+    success: function(res) {
+      // success
+    }
+  });
+
+  // bad
+  var loadingFlag = false;
+
+  function getDetail() {
+    loadingFlag = true;
+
+    $.ajax({
+      url: '',
+      type: 'get',
+      success: function(res) {
+        if (res.code === 200) {
+          loadingFlag = false;
+          // something
+        }
+      }
+    });
+  }
+
+  // good
+  var loadingFlag = false;
+
+  function getDetail() {
+    loadingFlag = true;
+
+    $.ajax({
+      url: '',
+      type: 'get',
+      success: function(res) {
+        loadingFlag = false;
+        if (res.code === 200) {
+          // something
+        } else {
+          console.log(res.msg)
+        }
+      },
+      error: function(err) {
+        loadingFlag = false;
+        console.log(err)
+      }
+    });
+  }
+
+  // best
+  var loadingFlag = false;
+
+  function getDetail() {
+    loadingFlag = true;
+
+    $.ajax({
+      url: '',
+      type: 'get',
+      success: function(res) {
+        if (res.code === 200) {
+          // something
+        } else {
+          console.log(res.msg)
+        }
+      },
+      error: function(err) {
+        console.log(err)
+      },
+      complete: function() {
+        loadingFlag = false;
+      }
+    });
+  }
+  ```
 
 
 
