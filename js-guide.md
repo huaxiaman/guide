@@ -14,6 +14,10 @@
 
 [5 请求数据](#5-请求数据)
 
+[6 其它](#6-其它)
+
+[7 运算符](#7-运算符)
+
 ## 1 空白
 
 ### 1.1 空格
@@ -608,6 +612,33 @@
     }
     ```
 
+- 用`switch`做条件控制时，要使用`break` 来将条件分支正常中断。
+  
+  ```javascript
+  
+  //bad
+  switch (filter) {
+    case 1:
+      doSomething1();
+    case 2:
+      doSomething2();
+    case 3:
+      doSomething3();
+  }
+  
+  //good
+  switch (filter) {
+    case 1:
+      doSomething1();
+      break;
+    case 2:
+      doSomething2();
+      break;
+    case 3:
+      doSomething3();
+  }
+  ```
+
 - 避免使用`Yoda`表示法。
 
 	```JavaScript
@@ -700,6 +731,60 @@ ye
     });
   }
   ```
+
+## 6 其它
+
+- 不要改变参数。
+
+  ```javascript
+  // bad
+  function foo(n) {
+    n = n * 100;
+    return n;
+  }
+  
+  function bar(option) {
+    option.key = 1;
+  }
+  
+  // good
+  function foo(n) {
+    var result = n;
+    result = result * 100;
+    return result;
+  }
+  
+  function bar(option) {
+    var key = Object.prototype.hasOwnProperty.call(obj, 'key') ? obj.key : 1;
+  }
+  ``` 
+
+- 不要重复声明变量。
+
+- 不要在控制语句的代码块中定义函数。
+  
+  ```javascript
+  // bad
+  if (flag) {
+    function Foo() {}
+  }
+  
+  while (flag) {
+    function Foo() {}
+  }
+  ```
+
+- 使用浏览器全局变量时加上`window.`前缀，`document`、`console`、`navigator`除外。
+  
+  
+## 7 运算符
+
+- 使用 === 和 !==而非 == 和 !=。
+> 例外：`obj == null`可以用来检查`null || undefined`。
+> 使用`===`可以避免等于判断中隐式的类型转换。
+
+	
+
 
 
 
