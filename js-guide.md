@@ -1,8 +1,14 @@
 # Javascript编码规范
 
+[变量](#变量)
+
+[字符串](#字符串)
+
+[对象](#对象)
+
 [1 空白](#1-空白)
 
-    [1.1 空格](#11-空格)
+[1.1 空格](#11-空格)
 
 [1.2 空行](#12-空行)
 
@@ -17,6 +23,101 @@
 [6 其它](#6-其它)
 
 [7 运算符](#7-运算符)
+
+## 变量
+
+- 在需要的地方给变量赋值，但位置要合理。
+> 变量声明与使用的距离越远，出现的跨度越大，代码的阅读与维护成本越高。虽然JavaScript的变量是函数作用域，还是应该根据编程中的意图，缩小变量出现的距离空间。
+
+```javascript
+// bad - unnecessary function call
+function checkName(hasName) {
+  var name = getName();
+
+  if (hasName === 'test') {
+    return false;
+  }
+
+  if (name === 'test') {
+    this.setName('');
+    return false;
+  }
+
+  return name;
+}
+
+// good
+function checkName(hasName) {
+  if (hasName === 'test') {
+    return false;
+  }
+
+  var name = getName();
+
+  if (name === 'test') {
+    this.setName('');
+    return false;
+  }
+
+  return name;
+}
+```
+
+## 字符串
+
+- 字符串使用单引号`''`。
+
+> [解释]：  
+输入单引号方便输入。  
+实际使用中，字符串经常用来拼接 HTML。为方便 HTML 中包含双引号而不需要转义写法。
+
+```javascript
+// bad
+const name = "Capt. Janeway";
+
+// bad - template literals should contain interpolation or newlines
+const name = `Capt. Janeway`;
+
+// good
+const name = 'Capt. Janeway';
+```
+
+## 对象
+
+- 创建对象时，不要给属性添加引号，除非属性是非法标识符。
+
+```javascript
+// bad
+var bad = {
+  'foo': 3,
+  'bar': 4,
+  'data-blah': 5,
+};
+
+// good
+var good = {
+  foo: 3,
+  bar: 4,
+  'data-blah': 5,
+};
+```
+
+- 对象属性换行时注意统一代码风格。
+
+```javascript
+// bad
+var bad = {
+  foo: 3, bar: 4,
+  baz: 5
+}
+
+// good
+var good = {
+  foo: 3,
+  bar: 4,
+  baz: 5
+}
+```
 
 ## 1 空白
 
