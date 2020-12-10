@@ -1,5 +1,7 @@
 # Javascript编码规范
 
+[杂项]
+
 [变量](#变量)
 
 [字符串](#字符串)
@@ -23,6 +25,28 @@
 [6 其它](#6-其它)
 
 [7 运算符](#7-运算符)
+
+## 杂项
+
+- 生产环境下请清除console.log。
+
+- 命名`函数`或`方法`的常用动词。
+
+| A | B |
+| ---- | ---- |
+| get 获取 | set 设置 |
+| add 添加 | remove 移除 |
+| create 创建 | destory 销毁 |
+| start 启动 | stop 停止 |
+| open 打开 | close 关闭 |
+| read 读取 | write 写入 |
+| load 载入 | save 保存 |
+| begin 开始 | end 结束 |
+| backup 添加 | restore 恢复 |
+| import 导入 | export 导出 |
+| split 分割 | merge 合并 |
+| inject 注入 | extract 提取 |
+
 
 ## 变量
 
@@ -63,13 +87,52 @@ function checkName(hasName) {
 }
 ```
 
+- 如果要保存对上下文`this`的引用，请使用self来命名。
+
+```javascript
+// bad
+var _this = this;
+
+// bad
+var This = this;
+
+// good
+var self = this;
+```
+
+- 每个`var`只能声明一个变量。
+
+```javascript
+// bad
+var a, b, c;
+
+// good
+var a = 1;
+var b = 2;
+var c = 3;
+```
+
+- 变量不要进行链式赋值。
+
+> [解释]：  
+变量链式赋值会创建隐藏的全局变量。
+
+```javascript
+// bad
+var a = b = c = 1
+
+// good
+var a = 1;
+var b = 2;
+var c = 3;
+```
+
 ## 字符串
 
 - 字符串使用单引号`''`。
 
 > [解释]：  
-输入单引号方便输入。  
-实际使用中，字符串经常用来拼接 HTML。为方便 HTML 中包含双引号而不需要转义写法。
+输入单引号方便输入，这对创建HTML字符串非常有好处。
 
 ```javascript
 // bad
@@ -660,6 +723,39 @@ var good = {
   ```
 
 ## 4 控制语句
+
+- 如果使用`if`和`else`多行代码块，把`else`放到和`if`块的闭合括号同一行。
+
+```javascript
+// bad
+if (test) {
+  thing1();
+  thing2();
+}
+else {
+  thing3();
+}
+
+// good
+if (test) {
+  thing1();
+  thing2();
+} else {
+  thing3();
+}
+```
+
+- `if`条件控制，即使代码只有一行，也不要省略大括号。
+
+```javascript
+// bad
+if (isTrue) doSomeThing();
+
+// good
+if (isTrue) {
+  doSomeThing();
+}
+```
 
 - 一旦你的控制语句 (`if`, `while` 等。) 太长或者超出行宽最大长度，每一个(组)条件要被放到新行。逻辑运算符应该在写在行的开头。
     > 原因：行开头有运算符可以使运算符有像链式方法一样的形式。这对于追踪复杂逻辑能够提高可读性。
