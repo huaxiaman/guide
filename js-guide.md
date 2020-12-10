@@ -1,38 +1,38 @@
 # Javascript编码规范
 
-[1 注释](#comments)
+[1 注释](#1-注释)
 
-[2 变量](#variables)
+[2 变量](#2-变量)
 
-[3 对象](#objects)
+[3 对象](#3-对象)
 
-[4 函数](#functions)
+[4 函数](#4-函数)
 
-[5 字符串](#strings)
+[5 字符串](#5-字符串)
 
-[6 运算符](#operators)
+[6 运算符](#6-运算符)
 
-[7 比较](#comparison)
+[7 比较](#7-比较)
 
-[8 控制语句](#control-statements)
+[8 控制语句](#8-控制语句)
 
-&emsp;&emsp;[8.1 条件判断](#control-statements--contions)
+&emsp;&emsp;[8.1 条件判断](#8-1-条件判断)
 
-&emsp;&emsp;[8.2 循环](#control-statements--loop)
+&emsp;&emsp;[8.2 循环](#8-2-循环)
 
-[9 空白](#spaces)
+[9 空白](#9-空白)
 
-&emsp;&emsp;[9.1 缩进](#spaces--indent)
+&emsp;&emsp;[9.1 缩进](#9-1-缩进)
 
-&emsp;&emsp;[9.1 空格](#spaces--space)
+&emsp;&emsp;[9.2 空格](#9-2-空格)
 
-&emsp;&emsp;[9.1 空行](#spaces--space-line)
+&emsp;&emsp;[9.3 空行](#9-3-空行)
 
-[10 命名](#naming)
+[10 命名](#10-命名)
 
-[11 异步](#ajax)
+[11 异步](#11-异步)
 
-## 1 注释(comments)
+## 1 注释
 
 - 注释缩进与被注释代码保持一致。
 
