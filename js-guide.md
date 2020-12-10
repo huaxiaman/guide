@@ -1,30 +1,37 @@
 # Javascript编码规范
 
-[杂项]
+[1 注释](#comments)
 
-[变量](#变量)
+[2 变量](#variables)
 
-[字符串](#字符串)
+[3 对象](#objects)
 
-[对象](#对象)
+[4 函数](#functions)
 
-[1 空白](#1-空白)
+[5 字符串](#strings)
 
-[1.1 空格](#11-空格)
+[6 运算符](#operators)
 
-[1.2 空行](#12-空行)
+[7 比较](#comparison)
 
-[2 命名规则](#2-命名规则)
+[8 控制语句](#control-statements)
 
-[3 注释](#3-注释)
+&emsp;&emsp;[8.1 条件判断](#control-statements--contions)
 
-[4 控制语句](#4-控制语句)
+&emsp;&emsp;[8.2 循环](#control-statements--loop)
 
-[5 请求数据](#5-请求数据)
+[9 空白](#spaces)
 
-[6 其它](#6-其它)
+&emsp;&emsp;[9.1 缩进](#spaces--indent)
 
-[7 运算符](#7-运算符)
+&emsp;&emsp;[9.1 空格](#spaces--space)
+
+&emsp;&emsp;[9.1 空行](#spaces--space-line)
+
+[10 命名](#naming)
+
+[11 异步](#ajax)
+
 
 ## 杂项
 
