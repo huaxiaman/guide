@@ -32,6 +32,148 @@
 
 [11 异步](#ajax)
 
+## 1 注释(comments)
+
+- 注释缩进与被注释代码保持一致。
+
+  ```javascript
+  // bad
+    // is current tab
+  var active = true;
+    
+  // bad
+  // 输出标题
+    document.getElementById("myH1").innerHTML="欢迎来到我的主页";
+  ```
+
+- 所有注释都要以空格开头便于阅读。
+
+  ```javascript
+  // bad
+  //is current tab
+  const active = true;
+
+  // good
+  // is current tab
+  const active = true;
+
+  // bad
+  /**
+   *make() returns a new element
+   *based on the passed-in tag name
+   */
+  function make(tag) {
+
+    // ...
+
+    return element;
+  }
+
+  // good
+  /**
+   * make() returns a new element
+   * based on the passed-in tag name
+   */
+  function make(tag) {
+
+    // ...
+
+    return element;
+  }
+  ```
+
+- 多行注释使用文档注释`/** ... */`，而避免使用`/* ... */`。
+
+  ```javascript
+  // bad
+  // 函数名
+  // 描述
+  // 参数
+  // 返回值
+  function make(tag) {
+
+    // ...
+
+    return 1;
+  }
+
+  // bad
+  /*
+  函数名
+  描述
+  参数
+  返回值
+  */
+  function make(tag) {
+
+    // ...
+
+    return 1;
+  }
+
+  // good
+  /**
+   * make() returns a new element
+   * based on the passed in tag name
+   */
+  function make(tag) {
+
+    // ...
+
+    return element;
+  }
+  ```
+  
+- <font color=#1986db size=5>[建议]</font>为了便于代码阅读和自文档化，以下内容必须包含以 `/**...*/` 形式的块注释中。
+
+1. 文件
+2. namespace
+3. 类
+4. 函数或方法
+5. 类属性
+6. 事件
+7. 全局变量
+8. 常量
+9. AMD模块
+
+- 单行注释独占一行，如果不是放置在块的第一行则在注释前留一个空行。
+
+  ```javascript
+  // bad
+  const active = true;  // is current tab
+
+  // good
+  // is current tab
+  const active = true;
+
+  // bad
+  function getType() {
+    console.log('fetching type...');
+    // set the default type to 'no type'
+    const type = this._type || 'no type';
+
+    return type;
+  }
+
+  // good
+  function getType() {
+    console.log('fetching type...');
+
+    // set the default type to 'no type'
+    const type = this._type || 'no type';
+
+    return type;
+  }
+
+  // also good
+  function getType() {
+    // set the default type to 'no type'
+    const type = this._type || 'no type';
+
+    return type;
+  }
+  ```
+
 
 ## 杂项
 
@@ -587,147 +729,7 @@ var good = {
   loadingData.then(callback);
   ```
 
-## 3 注释
 
-- 注释缩进与被注释代码保持一致。
-
-  ```javascript
-  // bad
-    // is current tab
-  var active = true;
-    
-  // bad
-  // 输出标题
-    document.getElementById("myH1").innerHTML="欢迎来到我的主页";
-  ```
-
-- 所有注释都要以空格开头便于阅读。
-
-  ```javascript
-  // bad
-  //is current tab
-  const active = true;
-
-  // good
-  // is current tab
-  const active = true;
-
-  // bad
-  /**
-   *make() returns a new element
-   *based on the passed-in tag name
-   */
-  function make(tag) {
-
-    // ...
-
-    return element;
-  }
-
-  // good
-  /**
-   * make() returns a new element
-   * based on the passed-in tag name
-   */
-  function make(tag) {
-
-    // ...
-
-    return element;
-  }
-  ```
-
-- 多行注释使用文档注释`/** ... */`，而避免使用`/* ... */`。
-
-  ```javascript
-  // bad
-  // 函数名
-  // 描述
-  // 参数
-  // 返回值
-  function make(tag) {
-
-    // ...
-
-    return 1;
-  }
-
-  // bad
-  /*
-  函数名
-  描述
-  参数
-  返回值
-  */
-  function make(tag) {
-
-    // ...
-
-    return 1;
-  }
-
-  // good
-  /**
-   * make() returns a new element
-   * based on the passed in tag name
-   */
-  function make(tag) {
-
-    // ...
-
-    return element;
-  }
-  ```
-  
-- <font color=#1986db size=5>[建议]</font>为了便于代码阅读和自文档化，以下内容必须包含以 `/**...*/` 形式的块注释中。
-
-1. 文件
-2. namespace
-3. 类
-4. 函数或方法
-5. 类属性
-6. 事件
-7. 全局变量
-8. 常量
-9. AMD模块
-
-- 单行注释独占一行，如果不是放置在块的第一行则在注释前留一个空行。
-
-  ```javascript
-  // bad
-  const active = true;  // is current tab
-
-  // good
-  // is current tab
-  const active = true;
-
-  // bad
-  function getType() {
-    console.log('fetching type...');
-    // set the default type to 'no type'
-    const type = this._type || 'no type';
-
-    return type;
-  }
-
-  // good
-  function getType() {
-    console.log('fetching type...');
-
-    // set the default type to 'no type'
-    const type = this._type || 'no type';
-
-    return type;
-  }
-
-  // also good
-  function getType() {
-    // set the default type to 'no type'
-    const type = this._type || 'no type';
-
-    return type;
-  }
-  ```
 
 ## 4 控制语句
 
