@@ -81,6 +81,45 @@
     return element;
   }
   ```
+  
+
+- 单行注释独占一行，如果不是放置在块的第一行则在注释前留一个空行。
+
+  ```javascript
+  // bad
+  const active = true;  // is current tab
+
+  // good
+  // is current tab
+  const active = true;
+
+  // bad
+  function getType() {
+    console.log('fetching type...');
+    // set the default type to 'no type'
+    const type = this._type || 'no type';
+
+    return type;
+  }
+
+  // good
+  function getType() {
+    console.log('fetching type...');
+
+    // set the default type to 'no type'
+    const type = this._type || 'no type';
+
+    return type;
+  }
+
+  // also good
+  function getType() {
+    // set the default type to 'no type'
+    const type = this._type || 'no type';
+
+    return type;
+  }
+  ```
 
 - 多行注释使用文档注释`/** ... */`，而避免使用`/* ... */`。
 
@@ -123,7 +162,7 @@
     return element;
   }
   ```
-  
+
 - <font color=#1986db size=5>[建议]</font>为了便于代码阅读和自文档化，以下内容必须包含以 `/**...*/` 形式的块注释中。
 
 1. 文件
@@ -136,200 +175,218 @@
 8. 常量
 9. AMD模块
 
-- 单行注释独占一行，如果不是放置在块的第一行则在注释前留一个空行。
-
-  ```javascript
-  // bad
-  const active = true;  // is current tab
-
-  // good
-  // is current tab
-  const active = true;
-
-  // bad
-  function getType() {
-    console.log('fetching type...');
-    // set the default type to 'no type'
-    const type = this._type || 'no type';
-
-    return type;
-  }
-
-  // good
-  function getType() {
-    console.log('fetching type...');
-
-    // set the default type to 'no type'
-    const type = this._type || 'no type';
-
-    return type;
-  }
-
-  // also good
-  function getType() {
-    // set the default type to 'no type'
-    const type = this._type || 'no type';
-
-    return type;
-  }
-  ```
-
-
 ## 杂项
 
 - 生产环境下请清除console.log。
 
-- 命名`函数`或`方法`的常用动词。
-
-| A | B |
-| ---- | ---- |
-| get 获取 | set 设置 |
-| add 添加 | remove 移除 |
-| create 创建 | destory 销毁 |
-| start 启动 | stop 停止 |
-| open 打开 | close 关闭 |
-| read 读取 | write 写入 |
-| load 载入 | save 保存 |
-| begin 开始 | end 结束 |
-| backup 添加 | restore 恢复 |
-| import 导入 | export 导出 |
-| split 分割 | merge 合并 |
-| inject 注入 | extract 提取 |
 
 
-## 变量
 
-- 在需要的地方给变量赋值，但位置要合理。
-> 变量声明与使用的距离越远，出现的跨度越大，代码的阅读与维护成本越高。虽然JavaScript的变量是函数作用域，还是应该根据编程中的意图，缩小变量出现的距离空间。
+## 2 变量
 
-```javascript
-// bad - unnecessary function call
-function checkName(hasName) {
-  var name = getName();
-
-  if (hasName === 'test') {
-    return false;
-  }
-
-  if (name === 'test') {
-    this.setName('');
-    return false;
-  }
-
-  return name;
-}
-
-// good
-function checkName(hasName) {
-  if (hasName === 'test') {
-    return false;
-  }
-
-  var name = getName();
-
-  if (name === 'test') {
-    this.setName('');
-    return false;
-  }
-
-  return name;
-}
-```
-
-- 如果要保存对上下文`this`的引用，请使用self来命名。
-
-```javascript
-// bad
-var _this = this;
-
-// bad
-var This = this;
-
-// good
-var self = this;
-```
+- 不要重复声明变量。
 
 - 每个`var`只能声明一个变量。
 
-```javascript
-// bad
-var a, b, c;
+	```javascript
+	// bad
+	var a, b, c;
 
-// good
-var a = 1;
-var b = 2;
-var c = 3;
-```
+	// good
+	var a = 1;
+	var b = 2;
+	var c = 3;
+	```
+
+- 在需要的地方变量声明，但位置要合理。
+
+	> 变量声明与使用的距离越远，出现的跨度越大，代码的阅读与维护成本越高。虽然JavaScript的变量是函数作用域，还是应该根据编程中的意图，缩小变量出现的距离空间。
+
+	```javascript
+	// bad - unnecessary function call
+	function checkName(hasName) {
+		var name = getName();
+
+		if (hasName === 'test') {
+		return false;
+		}
+
+		if (name === 'test') {
+		this.setName('');
+		return false;
+		}
+
+		return name;
+	}
+
+	// good
+	function checkName(hasName) {
+		if (hasName === 'test') {
+		return false;
+		}
+
+		var name = getName();
+
+		if (name === 'test') {
+		this.setName('');
+		return false;
+		}
+
+		return name;
+	}
+	```
 
 - 变量不要进行链式赋值。
 
-> [解释]：  
-变量链式赋值会创建隐藏的全局变量。
+	> [解释]：  
+	变量链式赋值会创建隐藏的全局变量。
 
-```javascript
-// bad
-var a = b = c = 1
+	```javascript
+	// bad
+	var a = b = c = 1
 
-// good
-var a = 1;
-var b = 2;
-var c = 3;
-```
+	// good
+	var a = 1;
+	var b = 2;
+	var c = 3;
+	```
 
-## 字符串
+- 如果要保存对上下文`this`的引用，请使用self来命名。
 
-- 字符串使用单引号`''`。
+	```javascript
+	// bad
+	var _this = this;
 
-> [解释]：  
-输入单引号方便输入，这对创建HTML字符串非常有好处。
+	// bad
+	var This = this;
 
-```javascript
-// bad
-const name = "Capt. Janeway";
+	// good
+	var self = this;
+	```
 
-// bad - template literals should contain interpolation or newlines
-const name = `Capt. Janeway`;
+- 使用浏览器全局变量时加上`window.`前缀，`document`、`console`、`navigator`除外。
 
-// good
-const name = 'Capt. Janeway';
-```
-
-## 对象
+## 3 对象
 
 - 创建对象时，不要给属性添加引号，除非属性是非法标识符。
 
-```javascript
-// bad
-var bad = {
-  'foo': 3,
-  'bar': 4,
-  'data-blah': 5,
-};
+	```javascript
+	// bad
+	var bad = {
+		'foo': 3,
+		'bar': 4,
+		'data-blah': 5,
+	};
 
-// good
-var good = {
-  foo: 3,
-  bar: 4,
-  'data-blah': 5,
-};
-```
+	// good
+	var good = {
+		foo: 3,
+		bar: 4,
+		'data-blah': 5,
+	};
+	```
 
 - 对象属性换行时注意统一代码风格。
 
-```javascript
-// bad
-var bad = {
-  foo: 3, bar: 4,
-  baz: 5
-}
+	```javascript
+	// bad
+	var bad = {
+		foo: 3, bar: 4,
+		baz: 5
+	}
 
-// good
-var good = {
-  foo: 3,
-  bar: 4,
-  baz: 5
-}
-```
+	// good
+	var good = {
+		foo: 3,
+		bar: 4,
+		baz: 5
+	}
+	```
+
+## 4 函数
+
+- 不要在控制语句的代码块中定义函数。
+  
+  ```javascript
+  // bad
+  if (flag) {
+    function Foo() {}
+  }
+  
+  while (flag) {
+    function Foo() {}
+  }
+  ```
+
+- 不要改变参数。
+
+  ```javascript
+  // bad
+  function foo(n) {
+    n = n * 100;
+    return n;
+  }
+  
+  function bar(option) {
+    option.key = 1;
+  }
+  
+  // good
+  function foo(n) {
+    var result = n;
+    result = result * 100;
+    return result;
+  }
+  
+  function bar(option) {
+    var key = Object.prototype.hasOwnProperty.call(obj, 'key') ? obj.key : 1;
+  }
+  ``` 
+
+- 命名`函数`或`方法`的常用动词。
+
+	| A | B |
+	| ---- | ---- |
+	| get 获取 | set 设置 |
+	| add 添加 | remove 移除 |
+	| create 创建 | destory 销毁 |
+	| start 启动 | stop 停止 |
+	| open 打开 | close 关闭 |
+	| read 读取 | write 写入 |
+	| load 载入 | save 保存 |
+	| begin 开始 | end 结束 |
+	| backup 添加 | restore 恢复 |
+	| import 导入 | export 导出 |
+	| split 分割 | merge 合并 |
+	| inject 注入 | extract 提取 |
+
+## 5 字符串
+
+- 字符串使用单引号`''`。
+
+	> [解释]：  
+	输入单引号方便输入，这对创建HTML字符串非常有好处。
+
+	```javascript
+	// bad
+	const name = "Capt. Janeway";
+
+	// bad - template literals should contain interpolation or newlines
+	const name = `Capt. Janeway`;
+
+	// good
+	const name = 'Capt. Janeway';
+	```
+
+## 6 运算符
+
+- 使用`===`而非`==`。
+
+	> 例外：`obj == null`可以用来检查`null || undefined`。  
+	
+	> 使用`===`可以避免等于判断中隐式的类型转换。
+
+## 7 比较
 
 ## 1 空白
 
@@ -729,8 +786,6 @@ var good = {
   loadingData.then(callback);
   ```
 
-
-
 ## 4 控制语句
 
 - 如果使用`if`和`else`多行代码块，把`else`放到和`if`块的闭合括号同一行。
@@ -854,7 +909,7 @@ if (isTrue) {
 	// good
 	if(theSky === 'blue) {  }
 	```
-ye
+
 ## 5 AJAX
 
 - 使用AJAX，必须要有处理请求失败的回调，并且对接口的非预期返回做处理。
@@ -938,56 +993,15 @@ ye
   }
   ```
 
-## 6 其它
 
-- 不要改变参数。
 
-  ```javascript
-  // bad
-  function foo(n) {
-    n = n * 100;
-    return n;
-  }
-  
-  function bar(option) {
-    option.key = 1;
-  }
-  
-  // good
-  function foo(n) {
-    var result = n;
-    result = result * 100;
-    return result;
-  }
-  
-  function bar(option) {
-    var key = Object.prototype.hasOwnProperty.call(obj, 'key') ? obj.key : 1;
-  }
-  ``` 
 
-- 不要重复声明变量。
 
-- 不要在控制语句的代码块中定义函数。
-  
-  ```javascript
-  // bad
-  if (flag) {
-    function Foo() {}
-  }
-  
-  while (flag) {
-    function Foo() {}
-  }
-  ```
 
-- 使用浏览器全局变量时加上`window.`前缀，`document`、`console`、`navigator`除外。
-  
-  
-## 7 运算符
 
-- 使用 === 和 !==而非 == 和 !=。
-> 例外：`obj == null`可以用来检查`null || undefined`。  
-> 使用`===`可以避免等于判断中隐式的类型转换。
+  
+  
+
 
 	
 
