@@ -14,6 +14,7 @@
  
 - [prop](#prop)  
 - [attribute](#attribute)  
+- [组件](#组件)
 
 ### 命名
 
@@ -393,95 +394,72 @@
   
   ```
 
-## 组件命名
-
-
-
-
-
-
-## 组件/实例的选项的顺序
+### 组件
 
 - 组件/实例的选项应该有统一的顺序。
 
   > 这是我们推荐的组件选项默认顺序。它们被划分为几大类，所以你也能知道从插件里添加的新 property 应该放到哪里。
   
-1. 副作用 (触发组件外的影响)  
-  
-   - `el`  
+&emsp;&emsp;1. 副作用 (触发组件外的影响)  
+&emsp;&emsp;&emsp;· `el`  
      
-2. 全局感知 (要求组件以外的知识)  
-     
-   - `name`  
-   - `parent`  
+&emsp;&emsp;2. 全局感知 (要求组件以外的知识)    
+&emsp;&emsp;&emsp;· `name`  
+&emsp;&emsp;&emsp;· `parent`  
   
-3. 组件类型 (更改组件的类型)  
+&emsp;&emsp;3. 组件类型 (更改组件的类型)  
+&emsp;&emsp;&emsp;· `functional`  
    
-   * `functional`  
+&emsp;&emsp;4. 模板修改器 (改变模板的编译方式)  
+&emsp;&emsp;&emsp;· `delimiters`
+&emsp;&emsp;&emsp;· `comments`  
    
-4. 模板修改器 (改变模板的编译方式)  
+&emsp;&emsp;5. 模板依赖 (模板内使用的资源)  
+&emsp;&emsp;&emsp;· `components`  
+&emsp;&emsp;&emsp;· `directives`  
+&emsp;&emsp;&emsp;· `filters`  
    
-   * `delimiters`
-   * `comments`  
-   
-5. 模板依赖 (模板内使用的资源)  
-   
-   * `components`  
-   * `directives`  
-   * `filters`  
-   
-6. 组合 (向选项里合并 property)  
-   
-   * `extends`  
-   * `mixins`  
+&emsp;&emsp;6. 组合 (向选项里合并 property)  
+&emsp;&emsp;&emsp;· `extends`  
+&emsp;&emsp;&emsp;· `mixins`  
 
-7. 接口 (组件的接口)  
+&emsp;&emsp;7. 接口 (组件的接口)  
+&emsp;&emsp;&emsp;· `inheritAttrs`  
+&emsp;&emsp;&emsp;· `model`  
+&emsp;&emsp;&emsp;· `props/propsData`  
    
-   * `inheritAttrs`  
-   * `model`  
-   * `props/propsData`  
-   
-8. 本地状态 (本地的响应式 property)  
-   
-   * `data` 
-   * `computed`  
+&emsp;&emsp;8. 本地状态 (本地的响应式 property)  
+&emsp;&emsp;&emsp;· `data` 
+&emsp;&emsp;&emsp;· `computed`  
 
-9. 事件 (通过响应式事件触发的回调)  
-   
-   * `watch`  
-   * `生命周期钩子 (按照它们被调用的顺序)`  
-   
-      + beforeCreate  
-      + created  
-      + beforeMount  
-      + mounted  
-      + beforeUpdate  
-      + updated  
-      + activated  
-      + deactivated  
-      + beforeDestroyed  
-      + destroyed  
+&emsp;&emsp;9. 事件 (通过响应式事件触发的回调)  
+&emsp;&emsp;&emsp;· `watch`  
+&emsp;&emsp;&emsp;· `生命周期钩子 (按照它们被调用的顺序)`  
+&emsp;&emsp;&emsp;&emsp;- beforeCreate  
+&emsp;&emsp;&emsp;&emsp;- created  
+&emsp;&emsp;&emsp;&emsp;- beforeMount  
+&emsp;&emsp;&emsp;&emsp;- mounted  
+&emsp;&emsp;&emsp;&emsp;- beforeUpdate  
+&emsp;&emsp;&emsp;&emsp;- updated  
+&emsp;&emsp;&emsp;&emsp;- activated  
+&emsp;&emsp;&emsp;&emsp;- deactivated  
+&emsp;&emsp;&emsp;&emsp;- beforeDestroyed  
+&emsp;&emsp;&emsp;&emsp;- destroyed  
 
-10. 非响应式的 property (不依赖响应系统的实例 property)  
-   
-    * `methods`  
+&emsp;&emsp;10. 非响应式的 property (不依赖响应系统的实例 property)  
+&emsp;&emsp;&emsp;· `methods`  
 
-11. 渲染 (组件输出的声明式描述)  
-   
-    * `template/render`  
-    * `renderError`  
+&emsp;&emsp;11. 渲染 (组件输出的声明式描述)  
+&emsp;&emsp;&emsp;· `template/render`  
+&emsp;&emsp;&emsp;· `renderError`  
 
-
-
-   
-## 单文件组件的顶级元素的顺序。  
+- 单文件组件的顶级元素的顺序。  
 
   > 单文件组件应该总是让 <script>、<template> 和 <style> 标签的顺序保持一致。且 <style> 要放在最后，因为另外两个标签至少要有一个。  
   
   ```javascript
   
   // bad
-  
   <style>/* ... */</style>
   <script>/* ... */</script>
   <template>...</template>
@@ -497,7 +475,6 @@
   <style>/* ... */</style>
   
   // good
-  
   <!-- ComponentA.vue -->
   <script>/* ... */</script>
   <template>...</template>
