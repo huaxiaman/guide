@@ -73,21 +73,18 @@
 
   > 这是我们为组件选项推荐的默认顺序。它们被划分为几大类，所以你也能知道新添加的自定义 attribute 和指令应该放到哪里。
   
- 1. 定义 (提供组件的选项)  
+&emsp;&emsp;1. 定义 (提供组件的选项)  
+&emsp;&emsp;&emsp;· `is`  
 
-    * `is`   
+&emsp;&emsp;2. 列表渲染 (创建多个变化的相同元素)  
+&emsp;&emsp;&emsp;· `v-for`  
      
- 2. 列表渲染 (创建多个变化的相同元素)  
-
-    * `v-for`  
-     
- 3. 条件渲染 (元素是否渲染/显示)  
-
-     * `v-if`  
-     * `v-else-if`  
-     * `v-else`  
-     * `v-show`  
-     * `v-cloak`  
+&emsp;&emsp;3. 条件渲染 (元素是否渲染/显示)  
+&emsp;&emsp;&emsp;· `v-if`  
+&emsp;&emsp;&emsp;· `v-else-if`  
+&emsp;&emsp;&emsp;· `v-else`  
+&emsp;&emsp;&emsp;· `v-show`  
+&emsp;&emsp;&emsp;· `v-cloak`  
      
   4. 渲染方式 (改变元素的渲染方式)  
 
