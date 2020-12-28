@@ -11,44 +11,114 @@
    + [模板中的组件名](#模板中的组件名)  
    + [JS/JSX中的组件名](#JS/JSX中的组件名)  
  
-- [Prop](#Prop)  
+- [prop](#prop)  
 - [attribute](#attribute)  
 
 
-### Prop
+### prop
 
-- Prop 定义应该尽量详细。  
+- `prop` 定义应该尽量详细。  
 
-  > 在你提交的代码中，prop 的定义应该尽量详细，至少需要指定其类型。  
+  > 在你提交的代码中，`prop` 的定义应该尽量详细，至少需要指定其类型。  
   
   ```javascript
 
-      // bad
-      // 这样做只有开发原型系统时可以接受
-      props: ['status']
+   // bad
+   // 这样做只有开发原型系统时可以接受
+   props: ['status']
 
-      // good
-      props: {
-        status: String
-      }
+   // good
+   props: {
+     status: String
+   }
 
-      // best
-      props: {
-        status: {
-          type: String,
-          required: true,
-          validator: function (value) {
-            return [
-              'syncing',
-              'synced',
-              'version-conflict',
-              'error'
-            ].indexOf(value) !== -1
-          }
-        }
-      }
+   // best
+   props: {
+     status: {
+       type: String,
+       required: true,
+       validator: function (value) {
+         return [
+           'syncing',
+           'synced',
+           'version-conflict',
+           'error'
+         ].indexOf(value) !== -1
+       }
+     }
+   }
+   
   ```
+
+### attribute
+
+- 多个 `attribute` 的元素应该分多行撰写，每个 `attribute` 一行。  
+
+  ```javascript
   
+  // bad
+  <img class="classname" id="imgId" src="https://vuejs.org/images/logo.png" alt="Vue Logo">
+  
+  // good
+  <img 
+    class="classname" 
+    id="imgId"
+    src="https://vuejs.org/images/logo.png"
+    alt="Vue Logo"
+  >
+  
+  ```
+
+- 元素 (包括组件) 的 attribute 应该有统一的顺序。
+
+  > 这是我们为组件选项推荐的默认顺序。它们被划分为几大类，所以你也能知道新添加的自定义 attribute 和指令应该放到哪里。
+  
+  1. 定义 (提供组件的选项)  
+
+     * `is`   
+     
+  2. 列表渲染 (创建多个变化的相同元素)  
+
+     * `v-for`  
+     
+  3. 条件渲染 (元素是否渲染/显示)  
+
+     * `v-if`  
+     * `v-else-if`  
+     * `v-else`  
+     * `v-show`  
+     * `v-cloak`  
+     
+  4. 渲染方式 (改变元素的渲染方式)  
+
+     * `v-pre`  
+     * `v-once`  
+     
+  5. 全局感知 (需要超越组件的知识)  
+
+     * `id`  
+     
+  6. 唯一的 attribute (需要唯一值的 attribute)  
+
+     * `ref`  
+     * `key`  
+     
+  7. 双向绑定 (把绑定和事件结合起来)  
+
+     * `v-model`  
+     
+  8. 其它 attribute (所有普通的绑定或未绑定的 attribute)  
+     
+  9. 事件 (组件事件监听器)  
+
+     * `v-on`  
+     
+  10. 内容 (覆写元素的内容)  
+
+      * `v-html`  
+      * `v-text`  
+
+
 - 为 v-for 设置键值。
 
   > 在组件上总是必须用 key 配合 v-for，以便维护内部组件及其子树的状态。甚至在元素上维护可预测的行为，比如动画中的对象固化 (object constancy)，也是一种好的做法。
@@ -339,56 +409,7 @@
     * `renderError`  
 
 
-## 元素 attribute 的顺序
 
-- 元素 (包括组件) 的 attribute 应该有统一的顺序。
-
-  > 这是我们为组件选项推荐的默认顺序。它们被划分为几大类，所以你也能知道新添加的自定义 attribute 和指令应该放到哪里。
-  
-1. 定义 (提供组件的选项)  
-
-   * `is`   
-     
-2. 列表渲染 (创建多个变化的相同元素)  
-
-   * `v-for`  
-     
-3. 条件渲染 (元素是否渲染/显示)  
-
-   * `v-if`  
-   * `v-else-if`  
-   * `v-else`  
-   * `v-show`  
-   * `v-cloak`  
-     
-4. 渲染方式 (改变元素的渲染方式)  
-
-   * `v-pre`  
-   * `v-once`  
-     
-5. 全局感知 (需要超越组件的知识)  
-
-   * `id`  
-     
-6. 唯一的 attribute (需要唯一值的 attribute)  
-
-   * `ref`  
-   * `key`  
-     
-7. 双向绑定 (把绑定和事件结合起来)  
-
-   * `v-model`  
-     
-8. 其它 attribute (所有普通的绑定或未绑定的 attribute)  
-     
-9. 事件 (组件事件监听器)  
-
-   * `v-on`  
-     
-10. 内容 (覆写元素的内容)  
-
-    * `v-html`  
-    * `v-text`  
    
 ## 单文件组件的顶级元素的顺序。  
 
