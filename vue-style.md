@@ -474,33 +474,33 @@
   <script>/* ... */</script>
   <template>...</template>
 
-  <!-- ComponentA.vue -->
+  // ComponentA.vue
   <script>/* ... */</script>
   <template>...</template>
   <style>/* ... */</style>
 
-  <!-- ComponentB.vue -->
+  // ComponentB.vue
   <template>...</template>
   <script>/* ... */</script>
   <style>/* ... */</style>
 
   // good
-  <!-- ComponentA.vue -->
+  // ComponentA.vue
   <script>/* ... */</script>
   <template>...</template>
   <style>/* ... */</style>
 
-  <!-- ComponentB.vue -->
+  // ComponentB.vue
   <script>/* ... */</script>
   <template>...</template>
   <style>/* ... */</style>
 
-  <!-- ComponentA.vue -->
+  // ComponentA.vue
   <template>...</template>
   <script>/* ... */</script>
   <style>/* ... */</style>
 
-  <!-- ComponentB.vue -->
+  // ComponentB.vue
   <template>...</template>
   <script>/* ... */</script>
   <style>/* ... */</style>
