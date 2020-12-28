@@ -8,64 +8,45 @@
    + [单例组件名](#单例组件)  
    + [基础组件名](#基础组件)  
    + [单文件组件文件名](#单文件组件文件名)  
-   + [单文件组件](#单文件组件)  
-   + [单文件组件](#单文件组件)  
-   + [单文件组件](#单文件组件)  
-   + [单文件组件](#单文件组件)  
-   + [单文件组件](#单文件组件)  
-   + [单文件组件](#单文件组件)  
-   + [单文件组件](#单文件组件)  
-   + [单文件组件](#单文件组件)  
-   + [单文件组件](#单文件组件)  
-   + [单文件组件](#单文件组件)  
-   + [单文件组件](#单文件组件)  
-   + [单文件组件](#单文件组件)  
-   + [单文件组件](#单文件组件)  
-   + [单文件组件](#单文件组件)  
-   + [单文件组件](#单文件组件)  
-   + [单文件组件](#单文件组件)  
-   
+   + [模板中的组件名](#模板中的组件名)  
+   + [JS/JSX中的组件名](#JS/JSX中的组件名)  
+ 
+- [Prop](#Prop)  
+- [attribute](#attribute)  
 
 
+### Prop
 
-- [组件数据](#组件数据)  
+- Prop 定义应该尽量详细。  
 
-
-
-
-
-### 组件数据
-
-- Prop 定义应该尽量详细。
-
-  > 在你提交的代码中，prop 的定义应该尽量详细，至少需要指定其类型。
+  > 在你提交的代码中，prop 的定义应该尽量详细，至少需要指定其类型。  
   
   ```javascript
-  
-  // bad
-  // 这样做只有开发原型系统时可以接受
-  props: ['status']
-  
-  // good
-  props: {
-    status: String
-  }
-  
-  // best
-  props: {
-    status: {
-      type: String,
-      required: true,
-      validator: function (value) {
-        return [
-          'syncing',
-          'synced',
-          'version-conflict',
-          'error'
-        ].indexOf(value) !== -1
+
+      // bad
+      // 这样做只有开发原型系统时可以接受
+      props: ['status']
+
+      // good
+      props: {
+        status: String
       }
-    }
-  }
+
+      // best
+      props: {
+        status: {
+          type: String,
+          required: true,
+          validator: function (value) {
+            return [
+              'syncing',
+              'synced',
+              'version-conflict',
+              'error'
+            ].indexOf(value) !== -1
+          }
+        }
+      }
   ```
   
 - 为 v-for 设置键值。
