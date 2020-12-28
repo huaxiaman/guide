@@ -204,13 +204,14 @@
 
 10. 非响应式的 property (不依赖响应系统的实例 property)  
    
-   * `methods`  
+    * `methods`  
 
 11. 渲染 (组件输出的声明式描述)  
    
-   * `template/render`  
-   * `renderError`  
-   
+    * `template/render`  
+    * `renderError`  
+
+
 ## 组件/实例的选项的顺序
 
 - 元素 (包括组件) 的 attribute 应该有统一的顺序。
@@ -259,6 +260,8 @@
      
 10. 内容 (覆写元素的内容)  
 
-   * `v-html`  
-   * `v-text`  
+    * `v-html`  
+    * `v-text`  
+   
+
      
