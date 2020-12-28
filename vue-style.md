@@ -7,6 +7,7 @@
 - [命名](#命名)  
    + [单例组件名](#单例组件)  
    + [基础组件名](#基础组件)  
+   + [全局组件名](#全局组件名)
    + [单文件组件文件名](#单文件组件文件名)  
    + [模板中的组件名](#模板中的组件名)  
    + [JS/JSX中的组件名](#JS/JSX中的组件名)  
@@ -16,11 +17,11 @@
 
 ### 命名
 
-- 单例组件名
+- **单例组件名**
 
-  **只应该拥有单个活跃实例的组件应该以 The 前缀命名，以示其唯一性。**
+  只应该拥有单个活跃实例的组件应该以 The 前缀命名，以示其唯一性。
 
-  > 这不意味着组件只可用于一个单页面，而是每个页面只使用一次。这些组件永远不接受任何 prop，因为它们是为你的应用定制的，而不是它们在你的应用中的上下文。如果你发现有必要添加 prop，那就表明这实际上是一个可复用的组件，只是目前在每个页面里只使用一次。
+  > 这不意味着组件只可用于一个单页面，而是每个页面只使用一次。这些组件永远不接受任何 `prop`，因为它们是为你的应用定制的，而不是它们在你的应用中的上下文。如果你发现有必要添加 `prop`，那就表明这实际上是一个可复用的组件，只是目前在每个页面里只使用一次。
   
   ```javascript
   
@@ -35,6 +36,184 @@
   |- TheSidebar.vue
   
   ```
+  
+- **基础组件名**  
+
+  应用特定样式和约定的基础组件 (也就是展示类的、无逻辑的或无状态的组件) 应该全部以一个特定的前缀开头，比如 Base、App 或 V。
+  
+  ```javascript
+  
+  // bad
+  components/
+  |- MyButton.vue
+  |- VueTable.vue
+  |- Icon.vue
+  
+  //good
+  components/
+  |- BaseButton.vue
+  |- BaseTable.vue
+  |- BaseIcon.vue
+
+  components/
+  |- AppButton.vue
+  |- AppTable.vue
+  |- AppIcon.vue
+
+  components/
+  |- VButton.vue
+  |- VTable.vue
+  |- VIcon.vue
+  
+  ```
+  
+- **全局组件名**
+
+  `Vue.component` 进行全局组件注册时，使用 `kebab-case` 命名。
+  
+  ```javascript
+  
+  // bad 
+  Vue.component('myComponent', {
+    // ...
+  })
+
+  // good 
+  Vue.component('MyComponent', {
+    // ...
+  })
+
+  // best
+  Vue.component('my-component', {
+    // ...
+  })
+  
+  ```
+  
+- **单文件组件文件名**  
+
+  `单文件组件` 的 `文件名` 应该是 `PascalCase` 风格。
+  
+  > `kebab-case` 风格也可取，但是出于一致性考虑，尽量使用 `PascalCase` 风格。
+  
+  ```javascript
+  
+  // bad 
+  components/
+  |- mycomponent.vue
+    
+  components/
+  |- myComponent.vue
+    
+  // good 
+  components/
+  |- my-component.vue
+    
+  // best
+  components/
+  |- MyComponent.vue
+  
+  ```
+  
+- **模板中的组件名**。
+  
+  在 `单文件组件` 和 `字符串模板` 中使用组件时组件名应该总是 `PascalCase` 风格的——但是在 `DOM 模板` 中使用组件时组件应该是 `kebab-case` 风格的。
+  
+  ```javascript
+
+  // bad 
+  // 单文件组件
+  <template>
+    <myComponent></myComponent>
+    <hiscomponent></hiscomponent>
+  </template>
+
+  // 字符串模板
+  new Vue({
+    template: '<div><myComponent></myComponent><hiscomponent></hiscomponent></div>'
+  })
+
+  // DOM模板
+  <html>
+    <body>
+      <div id="templateId">
+        <MyComponent></MyComponent>
+        <yourComponent></yourComponent>
+        <hiscomponent></hiscomponent>
+      </div>
+      <script>
+        new Vue({
+          el: '#template'
+        });
+      </script>
+    </body>
+  </html>
+
+  // good
+  // 单文件组件
+  <template>
+    <MyComponent></MyComponent>
+    <his-component></his-component>
+  </template>
+
+  // 字符串模板
+  new Vue({
+    template: '<div><MyComponent></MyComponent><his-component></his-component></div>'
+  })
+
+  // DOM模板
+  <html>
+    <body>
+      <div id="templateId">
+        <my-component></my-component>
+      </div>
+      <script>
+        new Vue({
+          el: '#template'
+        });
+      </script>
+    </body>
+  </html>
+  
+  ```
+
+- **`JS/JSX` 中的组件名**  
+  
+  `JS/JSX` 中的组件名应该始终是 `PascalCase` 的，仅在使用 `Vue.component` 进行全局组件注册时，采用 `kebab-case` 风格。
+  
+  ```javascript
+  
+  // bad
+  import myComponent from './MyComponent.vue'
+  
+  export default {
+    name: 'myComponent',
+    // ...
+  }
+  
+  export default {
+    name: 'my-component',
+    // ...
+  }
+  
+  Vue.component('myComponent', {
+    // ...
+  })
+  
+  // good
+  import MyComponent from './MyComponent.vue'
+  
+  export default {
+    name: 'MyComponent',
+    // ...
+  }
+  
+  Vue.component('my-component', {
+    // ...
+  })
+
+  ```
+
 
 ### prop
 
@@ -210,144 +389,9 @@
 
 ## 组件命名
 
--  `单文件组件` 的 `文件名` 应该是 `PascalCase` 风格。
-  
-  > `kebab-case` 风格也可取，但是出于一致性考虑，尽量使用 `PascalCase` 风格
-  
-  ```javascript
-  
-    // bad 
-    components/
-    |- mycomponent.vue
-    
-    components/
-    |- myComponent.vue
-    
-    // good 
-    components/
-    |- my-component.vue
-    
-    // best
-    components/
-    |- MyComponent.vue
-  ```
 
 
-- `Vue.component` 进行全局组件注册时，使用 `kebab-case` 命名。
-  
-  ```javascript
-  
-    // bad 
-    Vue.component('myComponent', {
-      // ...
-    })
-    
-    // good 
-    Vue.component('MyComponent', {
-      // ...
-    })
-    
-    // best
-    Vue.component('my-component', {
-      // ...
-    })
-  ```
-  
-- 模板中的组件名大小写。
-  
-  > 在 `单文件组件` 和 `字符串模板` 中使用组件时组件名应该总是 `PascalCase` 风格的——但是在 `DOM 模板` 中使用组件时组件应该是 `kebab-case` 风格的。
-  
-    ```javascript
-  
-    // bad 
-    // 单文件组件
-    <template>
-      <myComponent></myComponent>
-      <hiscomponent></hiscomponent>
-    </template>
-    
-    // 字符串模板
-    new Vue({
-      template: '<div><myComponent></myComponent><hiscomponent></hiscomponent></div>'
-    })
-    
-    // DOM模板
-    <html>
-      <body>
-        <div id="templateId">
-          <MyComponent></MyComponent>
-          <yourComponent></yourComponent>
-          <hiscomponent></hiscomponent>
-        </div>
-        <script>
-          new Vue({
-            el: '#template'
-          });
-        </script>
-      </body>
-    </html>
-    
-    // good
-    // 单文件组件
-    <template>
-      <MyComponent></MyComponent>
-      <his-component></his-component>
-    </template>
-    
-    // 字符串模板
-    new Vue({
-      template: '<div><MyComponent></MyComponent><his-component></his-component></div>'
-    })
-    
-    // DOM模板
-    <html>
-      <body>
-        <div id="templateId">
-          <my-component></my-component>
-        </div>
-        <script>
-          new Vue({
-            el: '#template'
-          });
-        </script>
-      </body>
-    </html>
-  ```
 
-- `JS/JSX` 中的组件名应该始终是 `PascalCase` 的。  
-  
-  > `JS/JSX` 中的组件名应该始终是 `PascalCase` 的，仅在使用 `Vue.component` 进行全局组件注册时，采用 `kebab-case` 风格命名组件。
-  
-  ```javascript
-  
-  // bad
-  import myComponent from './MyComponent.vue'
-  
-  export default {
-    name: 'myComponent',
-    // ...
-  }
-  
-  export default {
-    name: 'my-component',
-    // ...
-  }
-  
-  Vue.component('myComponent', {
-    // ...
-  })
-  
-  // good
-  import MyComponent from './MyComponent.vue'
-  
-  export default {
-    name: 'MyComponent',
-    // ...
-  }
-  
-  Vue.component('my-component', {
-    // ...
-  })
 
 
 ## 组件/实例的选项的顺序
