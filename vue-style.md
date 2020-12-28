@@ -470,40 +470,40 @@
   ```javascript
 
   // bad
-  <style>/* ... */</style>
-  <script>/* ... */</script>
+  <style>...</style>
+  <script>...</script>
   <template>...</template>
 
   // ComponentA.vue
-  <script>/* ... */</script>
+  <script>...</script>
   <template>...</template>
-  <style>/* ... */</style>
+  <style>...</style>
 
   // ComponentB.vue
   <template>...</template>
-  <script>/* ... */</script>
-  <style>/* ... */</style>
+  <script>...</script>
+  <style>...</style>
 
   // good
   // ComponentA.vue
-  <script>/* ... */</script>
+  <script>...</script>
   <template>...</template>
-  <style>/* ... */</style>
+  <style>...</style>
 
   // ComponentB.vue
-  <script>/* ... */</script>
+  <script>...</script>
   <template>...</template>
-  <style>/* ... */</style>
+  <style>...</style>
 
   // ComponentA.vue
   <template>...</template>
-  <script>/* ... */</script>
-  <style>/* ... */</style>
+  <script>...</script>
+  <style>...</style>
 
   // ComponentB.vue
   <template>...</template>
-  <script>/* ... */</script>
-  <style>/* ... */</style>
+  <script>...</script>
+  <style>...</style>
 
   ```
 
