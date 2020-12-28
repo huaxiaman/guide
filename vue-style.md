@@ -435,16 +435,16 @@
 &emsp;&emsp;9. 事件 (通过响应式事件触发的回调)  
 &emsp;&emsp;&emsp;· `watch`  
 &emsp;&emsp;&emsp;· `生命周期钩子 (按照它们被调用的顺序)`  
-&emsp;&emsp;&emsp;&emsp;- beforeCreate  
-&emsp;&emsp;&emsp;&emsp;- created  
-&emsp;&emsp;&emsp;&emsp;- beforeMount  
-&emsp;&emsp;&emsp;&emsp;- mounted  
-&emsp;&emsp;&emsp;&emsp;- beforeUpdate  
-&emsp;&emsp;&emsp;&emsp;- updated  
-&emsp;&emsp;&emsp;&emsp;- activated  
-&emsp;&emsp;&emsp;&emsp;- deactivated  
-&emsp;&emsp;&emsp;&emsp;- beforeDestroyed  
-&emsp;&emsp;&emsp;&emsp;- destroyed  
+&emsp;&emsp;&emsp;&emsp;- `beforeCreate`  
+&emsp;&emsp;&emsp;&emsp;- `created`  
+&emsp;&emsp;&emsp;&emsp;- `beforeMount`  
+&emsp;&emsp;&emsp;&emsp;- `mounted`  
+&emsp;&emsp;&emsp;&emsp;- `beforeUpdate`  
+&emsp;&emsp;&emsp;&emsp;- `updated`  
+&emsp;&emsp;&emsp;&emsp;- `activated`  
+&emsp;&emsp;&emsp;&emsp;- `deactivated`  
+&emsp;&emsp;&emsp;&emsp;- `beforeDestroyed`  
+&emsp;&emsp;&emsp;&emsp;- `destroyed`  
 
 &emsp;&emsp;10. 非响应式的 property (不依赖响应系统的实例 property)  
 &emsp;&emsp;&emsp;· `methods`  
