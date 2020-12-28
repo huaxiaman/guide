@@ -14,6 +14,27 @@
 - [prop](#prop)  
 - [attribute](#attribute)  
 
+### 命名
+
+- 单例组件名
+
+  **只应该拥有单个活跃实例的组件应该以 The 前缀命名，以示其唯一性。**
+
+  > 这不意味着组件只可用于一个单页面，而是每个页面只使用一次。这些组件永远不接受任何 prop，因为它们是为你的应用定制的，而不是它们在你的应用中的上下文。如果你发现有必要添加 prop，那就表明这实际上是一个可复用的组件，只是目前在每个页面里只使用一次。
+  
+  ```javascript
+  
+  // bad
+  components/
+  |- Heading.vue
+  |- MySidebar.vue
+  
+  // good
+  components/
+  |- TheHeading.vue
+  |- TheSidebar.vue
+  
+  ```
 
 ### prop
 
@@ -132,9 +153,10 @@
       {{ todo.text }}
     </li>
   </ul>
+  
   ```
   
-- 避免 v-if 和 v-for 用在一起，永远不要把 v-if 和 v-for 同时用在同一个元素上。
+- 避免 `v-if` 和 `v-for` 同时用在同一个元素上。
 
   > 一般我们在两种常见的情况下会倾向于这样做：
   
@@ -143,6 +165,7 @@
    * 为了避免渲染本应该被隐藏的列表 (比如 v-for="user in users" v-if="shouldShowUsers")。这种情形下，请将 v-if 移动至容器元素上 (比如 ul、ol)。
  
   ```javascript
+  
   // bad
   <ul>
     <li
@@ -184,7 +207,6 @@
   </ul>
   
   ```
-
 
 ## 组件命名
 
