@@ -1,6 +1,6 @@
-## VueJS 代码风格指南  
+## Vue.js 代码风格指南  
 
-> 本文档内容均摘录自VueJS官方文档。
+> 本文档内容均摘录自Vue.js<a href="https://cn.vuejs.org/v2/style-guide/#/">官方风格指南</a>。
 
 ### 目录
 
