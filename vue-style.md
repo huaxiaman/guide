@@ -86,34 +86,28 @@
 &emsp;&emsp;&emsp;· `v-show`  
 &emsp;&emsp;&emsp;· `v-cloak`  
      
-  4. 渲染方式 (改变元素的渲染方式)  
-
-     * `v-pre`  
-     * `v-once`  
+&emsp;&emsp;4. 渲染方式 (改变元素的渲染方式)  
+&emsp;&emsp;&emsp;· `v-pre`  
+&emsp;&emsp;&emsp;· `v-once`  
      
-  5. 全局感知 (需要超越组件的知识)  
-
-     * `id`  
+&emsp;&emsp;5. 全局感知 (需要超越组件的知识)  
+&emsp;&emsp;&emsp;· `id`  
      
-  6. 唯一的 attribute (需要唯一值的 attribute)  
-
-     * `ref`  
-     * `key`  
+&emsp;&emsp;6. 唯一的 attribute (需要唯一值的 attribute)  
+&emsp;&emsp;&emsp;· `ref`  
+&emsp;&emsp;&emsp;· `key`  
      
-  7. 双向绑定 (把绑定和事件结合起来)  
-
-     * `v-model`  
+&emsp;&emsp;7. 双向绑定 (把绑定和事件结合起来)  
+&emsp;&emsp;&emsp;· `v-model`  
      
-  8. 其它 attribute (所有普通的绑定或未绑定的 attribute)  
+&emsp;&emsp;8. 其它 attribute (所有普通的绑定或未绑定的 attribute)  
      
-  9. 事件 (组件事件监听器)  
+&emsp;&emsp;9. 事件 (组件事件监听器)  
+&emsp;&emsp;&emsp;· `v-on`  
 
-     * `v-on`  
-     
-  10. 内容 (覆写元素的内容)  
-
-      * `v-html`  
-      * `v-text`  
+&emsp;&emsp;10. 内容 (覆写元素的内容)  
+&emsp;&emsp;&emsp;· `v-html`  
+&emsp;&emsp;&emsp;· `v-text`  
 
 
 - 为 v-for 设置键值。
