@@ -463,10 +463,49 @@
   
   ```
 
-- 单文件组件的顶级元素的顺序。  
-  
-  > 单文件组件应该总是让 <script>、<template> 和 <style> 标签的顺序保持一致。且 <style> 要放在最后，因为另外两个标签至少要有一个。     
+- 单文件组件的顶级元素的顺序。
 
+  > 单文件组件应该总是让 <script>、<template> 和 <style> 标签的顺序保持一致。且 <style> 要放在最后，因为另外两个标签至少要有一个。  
+
+  ```javascript
+
+  // bad
+  <style>...</style>
+  <script>...</script>
+  <template>...</template>
+
+  // ComponentA.vue
+  <script>...</script>
+  <template>...</template>
+  <style>...</style>
+
+  // ComponentB.vue
+  <template>...</template>
+  <script>...</script>
+  <style>...</style>
+
+  // good
+  // ComponentA.vue
+  <script>...</script>
+  <template>...</template>
+  <style>...</style>
+
+  // ComponentB.vue
+  <script>...</script>
+  <template>...</template>
+  <style>...</style>
+
+  // ComponentA.vue
+  <template>...</template>
+  <script>...</script>
+  <style>...</style>
+
+  // ComponentB.vue
+  <template>...</template>
+  <script>...</script>
+  <style>...</style>
+
+  ```
 
 - 单文件组件的顶级元素的顺序。
 
