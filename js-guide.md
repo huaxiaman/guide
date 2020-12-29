@@ -166,111 +166,111 @@
 - 注释缩进与被注释代码保持一致。
 
   ```javascript
-	
+  
   // bad
   // is current tab
   var active = true;
-    
+  
   // bad
   // 输出标题
-    document.getElementById("myH1").innerHTML="欢迎来到我的主页";
-		
+  document.getElementById("myH1").innerHTML="欢迎来到我的主页";
+  
   ```
 
 - 所有注释都要以空格开头便于阅读。
 
   ```javascript
-	
+  
   // bad
   //is current tab
   const active = true;
-
+  
   // good
   // is current tab
   const active = true;
-
+  
   // bad
   /**
    *make() returns a new element
    *based on the passed-in tag name
    */
   function make(tag) {
-	
+  
     // ...
-
+    
     return element;
   }
-
+  
   // good
   /**
    * make() returns a new element
    * based on the passed-in tag name
    */
   function make(tag) {
-	
+  
     // ...
-
+    
     return element;
   }
-	
+  
   ```
   
 - 单行注释独占一行，如果不是放置在块的第一行则在注释前留一个空行。
 
   ```javascript
-	
+  
   // bad
   const active = true;  // is current tab
-
+  
   // good
   // is current tab
   const active = true;
-
+  
   // bad
   function getType() {
     console.log('fetching type...');
     // set the default type to 'no type'
     const type = this._type || 'no type';
-
+    
     return type;
   }
-
+  
   // good
   function getType() {
     console.log('fetching type...');
-
+    
     // set the default type to 'no type'
     const type = this._type || 'no type';
-
+    
     return type;
   }
-
+  
   // also good
   function getType() {
     // set the default type to 'no type'
     const type = this._type || 'no type';
-
+    
     return type;
   }
-	
+  
   ```
 
 - 多行注释使用文档注释`/** ... */`，而避免使用`/* ... */`。
 
   ```javascript
-	
+  
   // bad
   // 函数名
   // 描述
   // 参数
   // 返回值
   function make(tag) {
-
+  
     // ...
-
+    
     return 1;
   }
-
+  
   // bad
   /*
   函数名
@@ -279,9 +279,9 @@
   返回值
   */
   function make(tag) {
-
+  
     // ...
-
+    
     return 1;
   }
 
@@ -291,12 +291,12 @@
    * based on the passed in tag name
    */
   function make(tag) {
-
+  
     // ...
-
+    
     return element;
   }
-	
+  
   ```
 
 - <font color=#1986db size=5>[建议]</font>为了便于代码阅读和自文档化，以下内容必须包含以 `/**...*/` 形式的块注释中。
@@ -316,151 +316,152 @@
 
 - 每个 `var` 只声明一个变量。
 
-	```javascript
-	
-	// bad
-	var a, b, c;
-
-	// good
-	var a = 1;
-	var b = 2;
-	var c = 3;
-	
-	```
+  ```javascript
+  
+  // bad
+  var a, b, c;
+  
+  // good
+  var a = 1;
+  var b = 2;
+  var c = 3;
+  
+  ```
 
 - 在需要的地方变量声明，但位置要合理。
 
-	> 变量声明与使用的距离越远，出现的跨度越大，代码的阅读与维护成本越高。虽然JavaScript的变量是函数作用域，还是应该根据编程中的意图，缩小变量出现的距离空间。
-
-	```javascript
-	
-	// bad - unnecessary function call
-	function checkName(hasName) {
-		var name = getName();
-
-		if (hasName === 'test') {
-		return false;
-		}
-
-		if (name === 'test') {
-		this.setName('');
-		return false;
-		}
-
-		return name;
-	}
-
-	// good
-	function checkName(hasName) {
-		if (hasName === 'test') {
-		return false;
-		}
-
-		var name = getName();
-
-		if (name === 'test') {
-		this.setName('');
-		return false;
-		}
-
-		return name;
-	}
-	
-	```
+  > 变量声明与使用的距离越远，出现的跨度越大，代码的阅读与维护成本越高。虽然JavaScript的变量是函数作用域，还是应该根据编程中的意图，缩小变量出现的距离空间。
+  
+  ```javascript
+  
+  // bad - unnecessary function call
+  function checkName(hasName) {
+    var name = getName();
+    
+    if (hasName === 'test') {
+      return false;
+    }
+    
+    if (name === 'test') {
+      this.setName('');
+      return false;
+    }
+    
+    return name;
+  }
+    
+  // good
+  function checkName(hasName) {
+    if (hasName === 'test') {
+      return false;
+    }
+    
+    var name = getName();
+    
+    if (name === 'test') {
+      this.setName('');
+      
+      return false;
+    }
+    
+    return name;
+  }
+    
+  ```
 
 - 变量不要进行链式赋值。
 
-	> 变量链式赋值会创建隐藏的全局变量。
-
-	```javascript
-	
-	// bad
-	var a = b = c = 1
-
-	// good
-	var a = 1;
-	var b = 2;
-	var c = 3;
-	
-	```
+  > 变量链式赋值会创建隐藏的全局变量。
+  
+  ```javascript
+  
+  // bad
+  var a = b = c = 1
+  
+  // good
+  var a = 1;
+  var b = 2;
+  var c = 3;
+  
+  ```
 
 - 如果要保存对上下文 `this` 的引用，请使用 `self` 来命名。
 
-	```javascript
-	
-	// bad
-	var _this = this;
-
-	// bad
-	var This = this;
-
-	// good
-	var self = this;
-	
-	```
+  ```javascript
+  
+  // bad
+  var _this = this;
+  var This = this;
+  
+  // good
+  var self = this;
+  
+  ```
 
 - 使用浏览器全局变量时加上 `window.` 前缀，`document`、`console`、`navigator`除外。
 
-## 3 对象
+### 对象
 
 - 创建对象时，不要给属性添加引号，除非属性是非法标识符。
 
-	```javascript
-	
-	// bad
-	var bad = {
-		'foo': 3,
-		'bar': 4,
-		'data-blah': 5,
-	};
-
-	// good
-	var good = {
-		foo: 3,
-		bar: 4,
-		'data-blah': 5,
-	};
-	```
+  ```javascript
+  
+  // bad
+  var bad = {
+    'foo': 3,
+    'bar': 4,
+    'data-blah': 5
+  };
+  
+  // good
+  var good = {
+    foo: 3,
+    bar: 4,
+    'data-blah': 5
+  };
+  
+  ```
 
 - 对象属性换行时注意统一代码风格。
+  
+  ```javascript
+  
+  // bad
+  var bad = {
+    foo: 3, bar: 4,
+    baz: 5
+  }
+  
+  // good
+  var good = {
+    foo: 3,
+    bar: 4,
+    baz: 5
+  }
+  
+  ```
 
-	```javascript
-	// bad
-	var bad = {
-		foo: 3, bar: 4,
-		baz: 5
-	}
-
-	// good
-	var good = {
-		foo: 3,
-		bar: 4,
-		baz: 5
-	}
-	
-	```
-
-## 4 函数
+### 函数
 
 - 不要在控制语句的代码块中定义函数。
   
   ```javascript
-	
+  
   // bad
   if (flag) {
-    function Foo() {}
+    function Foo() {  }
   }
   
   while (flag) {
-    function Foo() {}
+    function Foo() {  }
   }
-	
+  
   ```
 
 - 不要改变参数。
 
   ```javascript
-	
+  
   // bad
   function foo(n) {
     n = n * 100;
@@ -481,25 +482,25 @@
   function bar(option) {
     var key = Object.prototype.hasOwnProperty.call(obj, 'key') ? obj.key : 1;
   }
-	
+  
   ``` 
 
 - 命名`函数`或`方法`的常用动词。
-
-	| A | B |
-	| ---- | ---- |
-	| get 获取 | set 设置 |
-	| add 添加 | remove 移除 |
-	| create 创建 | destory 销毁 |
-	| start 启动 | stop 停止 |
-	| open 打开 | close 关闭 |
-	| read 读取 | write 写入 |
-	| load 载入 | save 保存 |
-	| begin 开始 | end 结束 |
-	| backup 添加 | restore 恢复 |
-	| import 导入 | export 导出 |
-	| split 分割 | merge 合并 |
-	| inject 注入 | extract 提取 |
+  
+  | A | B |
+  | ---- | ---- |
+  | get 获取 | set 设置 |
+  | add 添加 | remove 移除 |
+  | create 创建 | destory 销毁 |
+  | start 启动 | stop 停止 |
+  | open 打开 | close 关闭 |
+  | read 读取 | write 写入 |
+  | load 载入 | save 保存 |
+  | begin 开始 | end 结束 |
+  | backup 添加 | restore 恢复 |
+  | import 导入 | export 导出 |
+  | split 分割 | merge 合并 |
+  | inject 注入 | extract 提取 |
 
 ## 5 字符串
 
