@@ -66,7 +66,7 @@
   
   ```
 
-- 不使用下划线开头或结尾。
+- 不使用下划线开头或结尾。  
 
   > 原因：JavaScript对于属性和方法并没有隐私的概念.尽管下划线开头通常意味着'private', 事实上这些属性是完全公开的，是公开API的一部分. 这种风格可能导致开发者错误地认为这不重要或者测试也不必要. 也就是说: 如果你想让其 “private”, 必须使其不可见.
 
@@ -76,45 +76,45 @@
   this.__firstName__ = 'Panda';
   this.firstName_ = 'Panda';
   this._firstName = 'Panda';
-
+  
   ```
 
-- 构造函数或类使用 `Pascal` 命名。
-
-	```javascript
-	
-	// bad
-	function user(options) {
-	  this.name = options.name;
-	}
-
-	const bad = new user({
-	  name: 'nope',
-	});
-
-	// good
-	class User {
-	 constructor(options) {
-	   this.name = options.name;
-	  }
-	}
-
-	const good = new User({
-	  name: 'yup',
-	});
-	
-	```
-
-- 模块文件名应该和默认 `export` 的名字相同。
-
-- 当默认导出一个函数时使用 `Camel` 风格。
+- 构造函数或类使用 `Pascal` 命名。  
 
   ```javascript
-	
-  function makeStyleGuide() {  }
+  
+  // bad
+  function user(options) {
+    this.name = options.name;
+  }
+  
+  const bad = new user({
+    name: 'nope'
+  });
+  
+  // good
+  class User {
+    constructor(options) {
+      this.name = options.name;
+    }
+  }
+  
+  const good = new User({
+    name: 'yup'
+  });
+  
+  ```
+  
+- 模块文件名应该和默认 `export` 的名字相同。  
 
+- 当默认导出一个函数时使用 `Camel` 风格。  
+
+  ```javascript
+  
+  function makeStyleGuide() {  }
+  
   export default makeStyleGuide;
-	
+  
   ```
   
 - 当导出构造函数、类、单例、函数库、对象时使用 `Pascal` 风格。
