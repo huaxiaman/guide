@@ -56,7 +56,7 @@
   const HttpRequests = [
     // ...
   ];
-
+  
   // good
   import SMSContainer from './containers/SMSContainer';
   
@@ -120,45 +120,45 @@
 - 当导出构造函数、类、单例、函数库、对象时使用 `Pascal` 风格。
 
   ```javascript
-	
+  
   const AirbnbStyleGuide = {
     es6: {}
   };
-
+  
   export default AirbnbStyleGuide;
-	
+  
   ```
 
 - 函数名使用动宾短语。
 
   ```javascript
-	
-	// bad
-	function productDetail() {  }
-	
+  
+  // bad
+  function productDetail() {  }
+  
   // good
   function getProductDetail() {  }
-	
+  
   ```
   
 - `boolean` 类型的变量使用 `is` 或 `has` 开头。
 
   ```javascript
-	
+  
   var isReady = false;
-	
+  
   var hasMoreCommands = false;
-	
+  
   ```
 
 - `Promise` 对象用动宾短语的进行时表达。
 
   ```javascript  
-	
+  
   var loadingData = ajax.get('url');
-	
+  
   loadingData.then(callback);
-	
+  
   ```
 
 ### 注释
