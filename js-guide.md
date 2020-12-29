@@ -49,19 +49,19 @@
   > 名字是用来阅读的，不能让步给计算机算法。
   
   ```javascript
-	
-	// bad
-	import SmsContainer from './containers/SmsContainer';
+  
+  // bad
+  import SmsContainer from './containers/SmsContainer';
+  
+  const HttpRequests = [
+    // ...
+  ];
 
-	const HttpRequests = [
-	  // ...
-	];
-
-	// good
+  // good
 	import SMSContainer from './containers/SMSContainer';
-
+	
 	const HTTPRequests = [
-	  // ...
+    // ...
 	];
 	
   ```
@@ -153,7 +153,7 @@
 
 - `Promise` 对象用动宾短语的进行时表达。
 
-  ```javascript
+  ```javascript  
 	
   var loadingData = ajax.get('url');
 	
