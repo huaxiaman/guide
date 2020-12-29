@@ -58,12 +58,12 @@
   ];
 
   // good
-	import SMSContainer from './containers/SMSContainer';
-	
-	const HTTPRequests = [
+  import SMSContainer from './containers/SMSContainer';
+  
+  const HTTPRequests = [
     // ...
-	];
-	
+  ];
+  
   ```
 
 - 不使用下划线开头或结尾。
