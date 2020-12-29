@@ -366,7 +366,7 @@
     
     return name;
   }
-    
+  
   ```
 
 - 变量不要进行链式赋值。
@@ -502,397 +502,406 @@
   | split 分割 | merge 合并 |
   | inject 注入 | extract 提取 |
 
-## 5 字符串
+### 字符串
 
-- 字符串使用单引号`''`。
+- 字符串使用单引号`'`。
 
-	> 输入单引号方便输入，这对创建HTML字符串非常有好处。
+  > 输入单引号方便输入，这对创建HTML字符串非常有好处。
 
-	```javascript
-	
-	// bad
-	const name = "Capt. Janeway";
+  ```javascript
+  
+  // bad
+  const name = "Capt. Janeway";
+  
+  // bad - template literals should contain interpolation or newlines
+  const name = `Capt. Janeway`;
+  
+  // good
+  const name = 'Capt. Janeway';
+  
+  ```
 
-	// bad - template literals should contain interpolation or newlines
-	const name = `Capt. Janeway`;
-
-	// good
-	const name = 'Capt. Janeway';
-	
-	```
-
-## 6 运算符
+### 运算符
 
 - 使用`===`而非`==`。
 
-	> 例外：`obj == null`可以用来检查`null || undefined`。  
-	
-	> 使用`===`可以避免等于判断中隐式的类型转换。
+  > 例外：`obj == null`可以用来检查`null || undefined`。  
+  
+  > 使用`===`可以避免等于判断中隐式的类型转换。
 
 ## 7 比较
 
-## 1 空白
+### 空白
 
-### 1.1 空格
+#### 空格
 
 - 将软tab设置为两个空格。  
-测试<span style="color:red;">好好</span>大的
 
-    ```javascript
-    // bad
-    function foo() {
-    ∙∙∙∙const name;
-    }
-
-    // bad
-    function bar() {
-    ∙const name;
-    }
-
-    // good
-    function baz() {
-    ∙∙const name;
-    }
-    ```
+  ```javascript
+  
+  // bad
+  function foo() {
+  ∙∙∙∙const name;
+  }
+  
+  // bad
+  function bar() {
+  ∙const name;
+  }
+  
+  // good
+  function baz() {
+  ∙∙const name;
+  }
+  
+  ```
 
 - 在起始花括号前加一个空格。
-
-    ```javascript
-    // bad
-    function test(){
-      console.log('test');
-    }
-
-    // good
-    function test() {
-      console.log('test');
-    }
-
-    // bad
-    dog.set('attr',{
-      age: '1 year',
-      breed: 'Bernese Mountain Dog',
-    });
-
-    // good
-    dog.set('attr', {
-      age: '1 year',
-      breed: 'Bernese Mountain Dog',
-    });
-    ```
+  
+  ```javascript
+  
+  // bad
+  function test(){
+    console.log('test');
+  }
+  
+  // good
+  function test() {
+    console.log('test');
+  }
+  
+  // bad
+  dog.set('attr',{
+    age: '1 year',
+    breed: 'Bernese Mountain Dog',
+  });
+  
+  // good
+  dog.set('attr', {
+    age: '1 year',
+    breed: 'Bernese Mountain Dog',
+  });
+  
+  ```
 
 - 在控制语句的圆括号前加一个空格 (if，while 等)。 在函数调用和声明中在参数列表和函数名间不要放置空格。
 
-    ```javascript
-    // bad
-    if(isJedi) {
-      fight ();
-    }
-
-    // good
-    if (isJedi) {
-      fight();
-    }
-
-    // bad
-    function fight () {
-      console.log ('Swooosh!');
-    }
-
-    // good
-    function fight() {
-      console.log('Swooosh!');
-    }
-    ```
+  ```javascript
+  
+  // bad
+  if(isJedi) {
+    fight ();
+  }
+  
+  // good
+  if (isJedi) {
+    fight();
+  }
+  
+  // bad
+  function fight () {
+    console.log ('Swooosh!');
+  }
+  
+  // good
+  function fight() {
+    console.log('Swooosh!');
+  }
+  
+  ```
 
 - 二元运算符两边放置空格。
 
-    ```javascript
-    // bad
-    const x=y+5;
-
-    // good
-    const x = y + 5;
-    ```
+  ```javascript
+  
+  // bad
+  const x=y+5;
+  
+  // good
+  const x = y + 5;
+  
+  ```
     
 - 圆括号中不要添加空格。
 
-    ```javascript
-    // bad
-    function bar( foo ) {
-      return foo;
-    }
-
-    // good
-    function bar(foo) {
-      return foo;
-    }
-
-    // bad
-    if ( foo ) {
-      console.log(foo);
-    }
-
-    // good
-    if (foo) {
-      console.log(foo);
-    }
-    ```
+  ```javascript
+  
+  // bad
+  function bar( foo ) {
+    return foo;
+  }
+  
+  // good
+  function bar(foo) {
+    return foo;
+  }
+  
+  // bad
+  if ( foo ) {
+    console.log(foo);
+  }
+  
+  // good
+  if (foo) {
+    console.log(foo);
+  }
+  
+  ```
 
 - 不要在方括号内添加空格
 
-    ```javascript
-    // bad
-    const foo = [ 1, 2, 3 ];
-    console.log(foo[ 0 ]);
-
-    // good
-    const foo = [1, 2, 3];
-    console.log(foo[0]);
-    ```
+  ```javascript
+  
+  // bad
+  const foo = [ 1, 2, 3 ];
+  console.log(foo[ 0 ]);
+  
+  // good
+  const foo = [1, 2, 3];
+  console.log(foo[0]);
+  
+  ```
 
 - 在花括号中添加空格。
 
-    ```javascript
-    // bad
-    const foo = {a: 1}
-    function foo () {return true} 
-
-    // good
-    const foo = { a: 1 }
-    function foo () { return true } 
-    ```
+  ```javascript
+  
+  // bad
+  const foo = {a: 1}
+  function foo () {return true} 
+  
+  // good
+  const foo = { a: 1 }
+  function foo () { return true } 
+  
+  ```
 
 - 逗号前不要加空格，逗号后要加空格。
 
-    ```javascript
-    // bad
-    var foo = 1,bar = 2
-    var arr = [1 , 2]
-    var bar = { a: 1,b: 2 }
+  ```javascript
+  
+  // bad
+  var foo = 1,bar = 2
+  var arr = [1 , 2]
+  var bar = { a: 1,b: 2 }
 
-    // good
-    var foo = 1, bar = 2
-    var arr = [1, 2]
-    var bar = { a: 1, b: 2 }
-    ```
+  // good
+  var foo = 1, bar = 2
+  var arr = [1, 2]
+  var bar = { a: 1, b: 2 }
+  
+  ```
 
 - 对象字面量属性中的 : 之后必须有空格，: 之前不允许有空格。
 
-    ```javascript
-    // bad
-    var obj = { a : 42 };
-    var obj2 = { a:42 };
+  ```javascript
+  
+  // bad
+  var obj = { a : 42 };
+  var obj2 = { a:42 };
 
-    // good
-    var obj = { a: 42 };
-    ```
+  // good
+  var obj = { a: 42 };
+  
+  ```
 
 - 行尾不得有多余的空格。
-
-    ```javascript
-    // bad
-    var obj = { a: 1 }∙∙
-
-    // good
-    var obj = { a: 1 }
-    ```
+  
+  ```javascript
+  
+  // bad
+  var obj = { a: 1 }∙∙
+  
+  // good
+  var obj = { a: 1 }
+  
+  ```
 
 ### 1.2 空行
 
 - 用空行结束文件。
-
-    ```javascript
-    // bad
-    import { es6 } from './AirbnbStyleGuide';
-      // ...
-    export default es6;
-    ```
-
-    ```javascript
-    // bad
-    import { es6 } from './AirbnbStyleGuide';
-      // ...
-    export default es6;↵
-    ↵
-    ```
     
 - 在代码块结束和下一个声明前留一个空行。
+  
+  ```javascript
+  
+  // bad
+  if (foo) {
+    return bar;
+  }
+  return baz;
 
-    ```javascript
-    // bad
-    if (foo) {
-      return bar;
-    }
-    return baz;
+  // good
+  if (foo) {
+    return bar;
+  }
 
-    // good
-    if (foo) {
-      return bar;
-    }
+  return baz;
 
-    return baz;
+  // bad
+  const obj = {
+    foo() {},
+    bar() {},
+  };
+  return obj;
 
-    // bad
-    const obj = {
-      foo() {
-      },
-      bar() {
-      },
-    };
-    return obj;
+  // good
+  const obj = {
+    foo() {
+    },
+    
+    bar() {
+    },
+  };
+  
+  return obj;
+  
+  // bad
+  const arr = [
+    function foo() {},
+    function bar() {},
+  ];
+  return arr;
 
-    // good
-    const obj = {
-      foo() {
-      },
+  // good
+  const arr = [
+    function foo() {},
 
-      bar() {
-      },
-    };
-
-    return obj;
-
-    // bad
-    const arr = [
-      function foo() {
-      },
-      function bar() {
-      },
-    ];
-    return arr;
-
-    // good
-    const arr = [
-      function foo() {
-      },
-
-      function bar() {
-      },
-    ];
-
-    return arr;
-    ```
+    function bar() {},
+  ];
+  
+  return arr;
+  
+  ```
 
 - 清除代码中的冗余空行。
 
-    ```javascript
-    // bad
-    function bar() {
-
-      console.log(foo);
-
-    }
-
-    // also bad
-    if (baz) {
-
-      console.log(qux);
-    } else {
-      console.log(foo);
-
-    }
-
-    // good
-    function bar() {
-      console.log(foo);
-    }
-
-    // good
-    if (baz) {
-      console.log(qux);
-    } else {
-      console.log(foo);
-    }
-    ```
+  ```javascript
+  
+  // bad
+  function bar() {
+  
+    console.log(foo);
+  
+  }
+  
+  // also bad
+  if (baz) {
+  
+    console.log(qux);
+  } else {
+    console.log(foo);
+    
+  }
+  
+  // good
+  function bar() {
+    console.log(foo);
+  }
+  
+  // good
+  if (baz) {
+    console.log(qux);
+  } else {
+    console.log(foo);
+  }
+  
+  ```
 
 
 ## 4 控制语句
 
 - 如果使用`if`和`else`多行代码块，把`else`放到和`if`块的闭合括号同一行。
 
-```javascript
-// bad
-if (test) {
-  thing1();
-  thing2();
-}
-else {
-  thing3();
-}
+  ```javascript
+  
+  // bad
+  if (test) {
+    thing1();
+    thing2();
+  }
+  else {
+    thing3();
+  }
 
-// good
-if (test) {
-  thing1();
-  thing2();
-} else {
-  thing3();
-}
-```
+  // good
+  if (test) {
+    thing1();
+    thing2();
+  } else {
+    thing3();
+  }
+  
+  ```
 
 - `if`条件控制，即使代码只有一行，也不要省略大括号。
 
-```javascript
-// bad
-if (isTrue) doSomeThing();
-
-// good
-if (isTrue) {
-  doSomeThing();
-}
-```
+  ```javascript
+  
+  // bad
+  if (isTrue) doSomeThing();
+  
+  // good
+  if (isTrue) {
+    doSomeThing();
+  }
+  
+  ```
 
 - 一旦你的控制语句 (`if`, `while` 等。) 太长或者超出行宽最大长度，每一个(组)条件要被放到新行。逻辑运算符应该在写在行的开头。
-    > 原因：行开头有运算符可以使运算符有像链式方法一样的形式。这对于追踪复杂逻辑能够提高可读性。
-
-    ```javascript
-    // bad
-    if ((foo === 123 || bar === 'abc') && doesItLookGoodWhenItBecomesThatLong() && isThisReallyHappening()) {
-      thing1();
-    }
-
-    // bad
-    if (foo === 123 &&
-      bar === 'abc') {
-      thing1();
-    }
-
-    // bad
-    if (foo === 123
-      && bar === 'abc') {
-      thing1();
-    }
     
-    // bad
-    if (
-      foo === 123 &&
-      bar === 'abc'
-    ) {
-      thing1();
-    }
-	
-	// good
-    if (
-      foo === 123
-      && bar === 'abc'
-    ) {
-      thing1();
-    }
-    
-    // good
-    if (
-      (foo === 123 || bar === "abc")
-      && doesItLookGoodWhenItBecomesThatLong()
-      && isThisReallyHappening()
-    ) {
-      thing1();
-    }
+  > 原因：行开头有运算符可以使运算符有像链式方法一样的形式。这对于追踪复杂逻辑能够提高可读性。
 
-    // good
-    if (foo === 123 && bar === 'abc') {
-      thing1();
-    }
-    ```
+  ```javascript
+  
+  // bad
+  if ((foo === 123 || bar === 'abc') && doesItLookGoodWhenItBecomesThatLong() && isThisReallyHappening()) {
+    thing1();
+  }
+    
+  // bad
+  if (foo === 123 &&
+    bar === 'abc') {
+    thing1();
+  }
+    
+  // bad
+  if (foo === 123
+    && bar === 'abc') {
+    thing1();
+  }
+    
+  // bad
+  if (
+    foo === 123 &&
+    bar === 'abc'
+  ) {
+    thing1();
+  }
+    
+  // good
+  if (
+    foo === 123
+    && bar === 'abc'
+  ) {
+    thing1();
+  }
+  
+  // good
+  if (
+    (foo === 123 || bar === "abc")
+    && doesItLookGoodWhenItBecomesThatLong()
+    && isThisReallyHappening()
+  ) {
+    thing1();
+  }
+  
+  // good
+  if (foo === 123 && bar === 'abc') {
+    thing1();
+  }
+    
+  ```
 
 - 用`switch`做条件控制时，要使用`break` 来将条件分支正常中断。
   
@@ -919,110 +928,20 @@ if (isTrue) {
     case 3:
       doSomething3();
   }
+  
   ```
 
 - 避免使用`Yoda`表示法。
 
-	```JavaScript
-	// bad
-	if('blue' === theSky) {  }
-	
-	// good
-	if(theSky === 'blue) {  }
-	```
-
-## 5 AJAX
-
-- 使用AJAX，必须要有处理请求失败的回调，并且对接口的非预期返回做处理。
-
-  ```javascript
-
+  ```JavaScript
+  
   // bad
-  $.ajax({
-    url: '',
-    type: 'get',
-    success: function(res) {
-      // success
-    }
-  });
-
-  // bad
-  var loadingFlag = false;
-
-  function getDetail() {
-    loadingFlag = true;
-
-    $.ajax({
-      url: '',
-      type: 'get',
-      success: function(res) {
-        if (res.code === 200) {
-          loadingFlag = false;
-          // something
-        }
-      }
-    });
-  }
-
+  if('blue' === theSky) {  }
+  
   // good
-  var loadingFlag = false;
-
-  function getDetail() {
-    loadingFlag = true;
-
-    $.ajax({
-      url: '',
-      type: 'get',
-      success: function(res) {
-        loadingFlag = false;
-        if (res.code === 200) {
-          // something
-        } else {
-          console.log(res.msg)
-        }
-      },
-      error: function(err) {
-        loadingFlag = false;
-        console.log(err)
-      }
-    });
-  }
-
-  // best
-  var loadingFlag = false;
-
-  function getDetail() {
-    loadingFlag = true;
-
-    $.ajax({
-      url: '',
-      type: 'get',
-      success: function(res) {
-        if (res.code === 200) {
-          // something
-        } else {
-          console.log(res.msg)
-        }
-      },
-      error: function(err) {
-        console.log(err)
-      },
-      complete: function() {
-        loadingFlag = false;
-      }
-    });
-  }
+  if(theSky === 'blue) {  }
+  
   ```
-
-
-
-
-
-
-
-  
-  
-
 
 	
 
