@@ -146,6 +146,7 @@
   ```javascript
 	
   var isReady = false;
+	
   var hasMoreCommands = false;
 	
   ```
@@ -155,6 +156,7 @@
   ```javascript
 	
   var loadingData = ajax.get('url');
+	
   loadingData.then(callback);
 	
   ```
