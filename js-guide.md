@@ -12,15 +12,154 @@
 - [字符串](#字符串)
 - [运算符](#运算符)
 - [比较](#比较)
-- [控制语句](#控制语句)  
-
+- [控制语句](#控制语句)
    + [条件判断](#条件判断)
    + [循环](#循环)
 - [空白](#空白)
    + [缩进](#缩进)
    + [空格](#空格)
    + [空行](#空行)
-- [异步](#异步)
+- [异步](#异步)  
+
+<a name="命名"></a>
+## 命名
+
+- 命名空间 、变量、函数、参数、方法、属性使用 `Camel` 命名。
+
+- 常量使用全部字母大写，单词间 `_` 分隔的命名法。
+
+- 不使用拼音或拼音简写命名。
+
+  ```javascript
+  
+  // bad
+  // 公积金额度
+  var gjjAmout;
+  
+  // 法人姓名
+  var frName;
+  
+  // 格式化
+  function geShiHua() {  }
+  
+  ```
+
+- 缩略词应全部大写或小写。
+
+  > 名字是用来阅读的，不能让步给计算机算法。
+  
+  ```javascript
+	
+	// bad
+	import SmsContainer from './containers/SmsContainer';
+
+	const HttpRequests = [
+		// ...
+	];
+
+	// good
+	import SMSContainer from './containers/SMSContainer';
+
+	const HTTPRequests = [
+		// ...
+	];
+	
+  ```
+
+- 不使用下划线开头或结尾。
+
+  > 原因：JavaScript对于属性和方法并没有隐私的概念.尽管下划线开头通常意味着'private', 事实上这些属性是完全公开的，是公开API的一部分. 这种风格可能导致开发者错误地认为这不重要或者测试也不必要. 也就是说: 如果你想让其 “private”, 必须使其不可见.
+
+  ```javascript
+  
+  // bad
+  this.__firstName__ = 'Panda';
+  this.firstName_ = 'Panda';
+  this._firstName = 'Panda';
+
+  ```
+
+- 构造函数或类使用 `Pascal` 命名。
+
+	```javascript
+	
+	// bad
+	function user(options) {
+	  this.name = options.name;
+	}
+
+	const bad = new user({
+	  name: 'nope',
+	});
+
+	// good
+	class User {
+	 constructor(options) {
+	   this.name = options.name;
+	  }
+	}
+
+	const good = new User({
+	  name: 'yup',
+	});
+	
+	```
+
+- 模块文件名应该和默认 `export` 的名字相同。
+
+- 当默认导出一个函数时使用 `Camel` 风格。
+
+  ```javascript
+	
+  function makeStyleGuide() {  }
+
+  export default makeStyleGuide;
+	
+  ```
+  
+- 当导出构造函数、类、单例、函数库、对象时使用 `Pascal` 风格。
+
+  ```javascript
+	
+  const AirbnbStyleGuide = {
+    es6: {}
+  };
+
+  export default AirbnbStyleGuide;
+	
+  ```
+
+- 函数名使用动宾短语。
+
+  ```javascript
+	
+	// bad
+	function productDetail() {  }
+	
+  // good
+  function getProductDetail() {  }
+	
+  ```
+  
+- `boolean` 类型的变量使用 `is` 或 `has` 开头。
+
+  ```javascript
+	
+  // good
+  var isReady = false;
+  var hasMoreCommands = false;
+	
+  ```
+
+- `Promise` 对象用动宾短语的进行时表达。
+
+  ```javascript
+	
+  //good
+  var loadingData = ajax.get('url');
+  loadingData.then(callback);
+	
+  ```
 
 ### 注释
 
@@ -652,128 +791,6 @@
     }
     ```
 
-## 2 命名规则
-
-- 不得使用拼音或拼音简写命名。
-
-  ```javascript
-  // bad
-  var 
-  var gjjAmout; // 公积金额度
-  var frName; // 法人姓名
-  function geShiHua() {  } // 格式化
-  ```
-
-- 不要使用下划线开头或结尾。
-
-  ```javascript
-  // bad
-  this.__firstName__ = 'Panda';
-  this.firstName_ = 'Panda';
-  this._firstName = 'Panda';
-
-  // good
-  this.firstName = 'Panda';
-
-  // good, in environments where WeakMaps are available
-  // see https://kangax.github.io/compat-table/es6/#test-WeakMap
-  const firstNames = new WeakMap();
-  firstNames.set(this, 'Panda');
-  ```
-
-- `命名空间` 、`变量`、`函数`、`参数`、`方法`、`属性`使用`Camel`命名。
-
-- `常量`使用全部字母大写，单词间`_`分隔的命名法。
-
-- 仅当命名`构造函数`或`类`的时候使用`Pascal`命名法。
-
-    ```javascript
-    // bad
-    function user(options) {
-      this.name = options.name;
-    }
-
-    const bad = new user({
-      name: 'nope',
-    });
-
-    // good
-    class User {
-      constructor(options) {
-        this.name = options.name;
-      }
-    }
-
-    const good = new User({
-      name: 'yup',
-    });
-    ```
-    
-- `文件名`应该和默认`export`的名字刚好匹配。
-    
-- 当默认导出一个函数时使用`Camel`风格。
-
-  ```javascript
-  function makeStyleGuide() {  }
-
-  export default makeStyleGuide;
-  ```
-  
-- 当导出`构造函数`、`类`、`单例`、`函数库`、`对象`时使用`Pascal`风格。
-
-  ```javascript
-  const AirbnbStyleGuide = {
-    es6: {
-    }
-  };
-
-  export default AirbnbStyleGuide;
-  ```
-
-- 缩略词应全部大写或小写。
-
-  > 原因：名字是用来阅读的，不能让步给计算机算法.
-  
-      ```javascript
-    // bad
-    import SmsContainer from './containers/SmsContainer';
-
-    // bad
-    const HttpRequests = [
-      // ...
-    ];
-
-    // good
-    import SMSContainer from './containers/SMSContainer';
-
-    // good
-    const HTTPRequests = [
-      // ...
-    ];
-    ```
-    
-- [建议] `函数名`使用`动宾短语`。
-
-  ```javascript
-  // good
-  function getStyle(element) {  }
-  ```
-  
-- 【建议】 `boolean`类型的变量使用`is`或`has`开头。
-
-  ```javascript
-  // good
-  var isReady = false;
-  var hasMoreCommands = false;
-  ```
-  
-- [建议] `Promise对象`用`动宾短语的进行时`表达。
-
-  ```javascript
-  //good
-  var loadingData = ajax.get('url');
-  loadingData.then(callback);
-  ```
 
 ## 4 控制语句
 
