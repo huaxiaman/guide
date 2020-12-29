@@ -54,14 +54,14 @@
 	import SmsContainer from './containers/SmsContainer';
 
 	const HttpRequests = [
-		// ...
+	  // ...
 	];
 
 	// good
 	import SMSContainer from './containers/SMSContainer';
 
 	const HTTPRequests = [
-		// ...
+	  // ...
 	];
 	
   ```
@@ -145,7 +145,6 @@
 
   ```javascript
 	
-  // good
   var isReady = false;
   var hasMoreCommands = false;
 	
@@ -155,7 +154,6 @@
 
   ```javascript
 	
-  //good
   var loadingData = ajax.get('url');
   loadingData.then(callback);
 	
