@@ -523,6 +523,140 @@
   
   > 使用`===`可以避免等于判断中隐式的类型转换。
 
+### 控制语句
+
+- 把 `else` 放到和 `if` 块的闭合括号同一行。
+
+  ```javascript
+  
+  // bad
+  if (test) {
+    thing1();
+    thing2();
+  }
+  else {
+    thing3();
+  }
+
+  // good
+  if (test) {
+    thing1();
+    thing2();
+  } else {
+    thing3();
+  }
+  
+  ```
+
+- `if`条件控制，即使代码只有一行，也不要省略大括号。
+
+  ```javascript
+  
+  // bad
+  if (isTrue) doSomeThing();
+  
+  // good
+  if (isTrue) {
+    doSomeThing();
+  }
+  
+  ```
+
+- 一旦你的控制语句 (`if`, `while` 等。) 太长或者超出行宽最大长度，每一个(组)条件要被放到新行。逻辑运算符应该在写在行的开头。
+    
+  > 原因：行开头有运算符可以使运算符有像链式方法一样的形式。这对于追踪复杂逻辑能够提高可读性。
+
+  ```javascript
+  
+  // bad
+  if ((foo === 123 || bar === 'abc') && doesItLookGoodWhenItBecomesThatLong() && isThisReallyHappening()) {
+    thing1();
+  }
+    
+  // bad
+  if (foo === 123 &&
+    bar === 'abc') {
+    thing1();
+  }
+    
+  // bad
+  if (foo === 123
+    && bar === 'abc') {
+    thing1();
+  }
+    
+  // bad
+  if (
+    foo === 123 &&
+    bar === 'abc'
+  ) {
+    thing1();
+  }
+    
+  // good
+  if (
+    foo === 123
+    && bar === 'abc'
+  ) {
+    thing1();
+  }
+  
+  // good
+  if (
+    (foo === 123 || bar === "abc")
+    && doesItLookGoodWhenItBecomesThatLong()
+    && isThisReallyHappening()
+  ) {
+    thing1();
+  }
+  
+  // good
+  if (foo === 123 && bar === 'abc') {
+    thing1();
+  }
+    
+  ```
+
+- 用`switch`做条件控制时，要使用`break` 来将条件分支正常中断。
+  
+  ```javascript
+  
+  //bad
+  switch (filter) {
+    case 1:
+      doSomething1();
+    case 2:
+      doSomething2();
+    case 3:
+      doSomething3();
+  }
+  
+  //good
+  switch (filter) {
+    case 1:
+      doSomething1();
+      break;
+    case 2:
+      doSomething2();
+      break;
+    case 3:
+      doSomething3();
+  }
+  
+  ```
+
+- 避免使用`Yoda`表示法。
+
+  ```JavaScript
+  
+  // bad
+  if('blue' === theSky) {  }
+  
+  // good
+  if(theSky === 'blue) {  }
+  
+  ```
+
 ### 空白
 
 #### 空格
@@ -799,138 +933,4 @@
   }
   
   ```
-
-
-### 控制语句
-
-- 把 `else` 放到和 `if` 块的闭合括号同一行。
-
-  ```javascript
   
-  // bad
-  if (test) {
-    thing1();
-    thing2();
-  }
-  else {
-    thing3();
-  }
-
-  // good
-  if (test) {
-    thing1();
-    thing2();
-  } else {
-    thing3();
-  }
-  
-  ```
-
-- `if`条件控制，即使代码只有一行，也不要省略大括号。
-
-  ```javascript
-  
-  // bad
-  if (isTrue) doSomeThing();
-  
-  // good
-  if (isTrue) {
-    doSomeThing();
-  }
-  
-  ```
-
-- 一旦你的控制语句 (`if`, `while` 等。) 太长或者超出行宽最大长度，每一个(组)条件要被放到新行。逻辑运算符应该在写在行的开头。
-    
-  > 原因：行开头有运算符可以使运算符有像链式方法一样的形式。这对于追踪复杂逻辑能够提高可读性。
-
-  ```javascript
-  
-  // bad
-  if ((foo === 123 || bar === 'abc') && doesItLookGoodWhenItBecomesThatLong() && isThisReallyHappening()) {
-    thing1();
-  }
-    
-  // bad
-  if (foo === 123 &&
-    bar === 'abc') {
-    thing1();
-  }
-    
-  // bad
-  if (foo === 123
-    && bar === 'abc') {
-    thing1();
-  }
-    
-  // bad
-  if (
-    foo === 123 &&
-    bar === 'abc'
-  ) {
-    thing1();
-  }
-    
-  // good
-  if (
-    foo === 123
-    && bar === 'abc'
-  ) {
-    thing1();
-  }
-  
-  // good
-  if (
-    (foo === 123 || bar === "abc")
-    && doesItLookGoodWhenItBecomesThatLong()
-    && isThisReallyHappening()
-  ) {
-    thing1();
-  }
-  
-  // good
-  if (foo === 123 && bar === 'abc') {
-    thing1();
-  }
-    
-  ```
-
-- 用`switch`做条件控制时，要使用`break` 来将条件分支正常中断。
-  
-  ```javascript
-  
-  //bad
-  switch (filter) {
-    case 1:
-      doSomething1();
-    case 2:
-      doSomething2();
-    case 3:
-      doSomething3();
-  }
-  
-  //good
-  switch (filter) {
-    case 1:
-      doSomething1();
-      break;
-    case 2:
-      doSomething2();
-      break;
-    case 3:
-      doSomething3();
-  }
-  
-  ```
-
-- 避免使用`Yoda`表示法。
-
-  ```JavaScript
-  
-  // bad
-  if('blue' === theSky) {  }
-  
-  // good
-  if(theSky === 'blue) {  }
-  
-  ```
